@@ -10,27 +10,24 @@ import Layout from "../components/PageLayout";
 import styles from "../styles/Error.module.css";
 
 export default function _error() {
-  // const [searchText, setSearchText] = useState(""); // To hold the search text
-  // const router = useRouter(); // To handle redirection
-  // const inputRef = useRef(null); // Reference to the input field
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter();
+  const inputRef = useRef(null);
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault(); // Prevent page reload on form submit
-  //   if (searchText.trim()) {
-  //     // Redirect to the URL with the search query parameter
-  //     router.push(`/search?query=${encodeURIComponent(searchText)}`);
-  //   }
-  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchText.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchText)}`);
+    }
+  };
 
-  // const handleContainerClick = () => {
-  //   // Focus on the input field when the searchbox div is clicked
-  //   inputRef.current?.focus();
-  // };
+  const handleContainerClick = () => {
+    inputRef.current?.focus();
+  };
 
-  // const handleBackClick = () => {
-  //     // Navigate back to the previous page
-  //     router.back();
-  //   };
+  const handleBackClick = () => {
+      router.back();
+    };
 
   return (
     <>
@@ -46,8 +43,8 @@ export default function _error() {
             </div>
             <form
               className={styles.searchbox}
-              // onSubmit={handleSearch}
-              // onClick={handleContainerClick}
+              onSubmit={handleSearch}
+              onClick={handleContainerClick}
             >
               <i className={`material-icons ${styles.icon}`} alt="search">
                 search
@@ -65,7 +62,9 @@ export default function _error() {
             </form>
           </div>
 
-          <button className={styles.backbtn} onClick={handleBackClick}>
+          <button className={styles.backbtn} 
+          onClick={handleBackClick}
+          >
             back to previous
           </button>
         </div>
