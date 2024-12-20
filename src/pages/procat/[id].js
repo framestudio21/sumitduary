@@ -43,14 +43,29 @@ export default function Id() {
       return;
     }
 
-    const cleanPathname = pathname.replace("/procat/", "");
-    const pathParts = cleanPathname.split("-");
-    if (pathParts.length < 2) {
+    // const cleanPathname = pathname.replace("/procat/", "");
+    // const pathParts = cleanPathname.split("-");
+    // if (pathParts.length < 2) {
+    //   console.error("Invalid URL format. Expected at least two parts.");
+    //   router.replace("/404"); // Redirect to 404 if the URL format is invalid
+    //   return;
+    // }
+    // const [_id, specialID, ...titleParts] = pathParts;
+
+    const fullUrl = `${window.location.origin}${pathname}`;
+    const url = new URL(fullUrl);
+
+    const path = url.pathname; // e.g., "/procat/12345-abcde-Sample%20Title"
+    const regex = /\/procat\/([^\/]+)-([^\/]+)-(.*)/;
+    const match = path.match(regex);
+
+    if (!match || match.length < 4) {
       console.error("Invalid URL format. Expected at least two parts.");
-      router.replace("/404"); // Redirect to 404 if the URL format is invalid
+      router.replace("/404");
       return;
     }
-    const [_id, specialID, ...titleParts] = pathParts;
+
+    const [_fullMatch, _id, specialID, title] = match;
 
     if (!_id || !specialID) {
       router.replace("/404");

@@ -15,10 +15,30 @@ export default function ProductCategory() {
   const [productImages, setProductImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+    const [type, setType] = useState(null);
 
   // Extract the type from the URL
   const pathname = usePathname();
-  const type = pathname ? pathname.split("/procat/category/").pop() : null;
+  // const type = pathname ? pathname.split("/procat/category/").pop() : null;
+
+  useEffect(() => {
+    if (!pathname) {
+      console.warn("Pathname is not available yet.");
+      return;
+    }
+
+    const basePath = "/procat/category/";
+    const typeIndex = pathname.lastIndexOf(basePath);
+
+    if (typeIndex === -1) {
+      console.error("Base path not found in the URL");
+      setType(null); // Set type to null if the base path isn't found
+    } else {
+      const extractedType = pathname.substring(typeIndex + basePath.length);
+      setType(extractedType);
+      console.log("Extracted type:", extractedType);
+    }
+  }, [pathname]);
 
   const fetchFiles = async () => {
     setLoading(true);
@@ -138,7 +158,7 @@ export default function ProductCategory() {
           ))
         ) : (
           <div className={styles.noproductmessage}>
-            No products found for type "{type}".
+            No products found for type "{pathname}".
           </div>
         )}
       </div>

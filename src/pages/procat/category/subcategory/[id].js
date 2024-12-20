@@ -18,10 +18,20 @@ export default function ProductCategory() {
 
   // Extract and decode the subcategory from the URL
   const pathname = usePathname();
-  const type = pathname
-    ? decodeURIComponent(pathname.split("/procat/category/subcategory/").pop())
-    : null;
+  // const type = pathname
+  //   ? decodeURIComponent(pathname.split("/procat/category/subcategory/").pop())
+  //   : null;
 
+  const type = pathname
+  ? decodeURIComponent(
+      pathname.substring(
+        pathname.lastIndexOf("/procat/category/subcategory/") +
+          "/procat/category/subcategory/".length
+      )
+    )
+  : null;
+
+  
   const fetchFiles = async () => {
     setLoading(true);
     setError(null);

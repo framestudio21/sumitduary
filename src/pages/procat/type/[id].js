@@ -15,10 +15,34 @@ export default function ProductCategory() {
   const [productImages, setProductImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [type, setType] = useState(null);
 
-  // Extract the type from the URL
-  const pathname = usePathname();
-  const type = pathname.split("/procat/type/").pop(); // Gets the last segment of the path
+  // // Extract the type from the URL
+  // const pathname = usePathname();
+  // const type = pathname.split("/procat/type/").pop(); // Gets the last segment of the path
+
+
+  const pathname = usePathname(); // e.g., "/procat/type/someType"
+
+  useEffect(() => {
+    if (!pathname) {
+      console.warn("Pathname is not available yet.");
+      return;
+    }
+
+    const basePath = "/procat/type/";
+    const typeIndex = pathname.lastIndexOf(basePath);
+
+    if (typeIndex === -1) {
+      console.error("Base path not found in the URL");
+      setType(null); // Set type to null if the base path isn't found
+    } else {
+      const extractedType = pathname.substring(typeIndex + basePath.length);
+      setType(extractedType);
+      console.log("Extracted type:", extractedType);
+    }
+  }, [pathname]);
+
 
   const fetchFiles = async () => {
     setLoading(true);
@@ -87,7 +111,7 @@ export default function ProductCategory() {
                     <Link href={`/procat/type/${product.type}`} className={styles.type}>
                       : {product.type}
                     </Link>
-                    <Link href="/" className={styles.type}>
+                    <Link href={`/procat/category/${product.category}`} className={styles.type}>
                       : {product.category}
                     </Link>
                     {product.subCategories?.map((subCategory, index) => (
@@ -122,7 +146,7 @@ export default function ProductCategory() {
            </div>
           ) : (
             <div className={styles.noproductmessage}>
-              No products found for type "{type}".
+              No products found for type "{pathname}".
             </div>
           )}
         </div>

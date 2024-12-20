@@ -43,16 +43,31 @@ export default function Id() {
       return;
     }
 
-    const cleanPathname = pathname.replace("/admin/home/product/", "");
-    const pathParts = cleanPathname.split("-");
+    // const cleanPathname = pathname.replace("/admin/home/product/", "");
+    // const pathParts = cleanPathname.split("-");
 
-    if (pathParts.length < 2) {
+    // if (pathParts.length < 2) {
+    //   console.error("Invalid URL format. Expected at least two parts.");
+    //   router.replace("/404"); // Redirect to 404 if the URL format is invalid
+    //   return;
+    // }
+
+    // const [_id, specialID, ...titleParts] = pathParts;
+
+    const fullUrl = `${window.location.origin}${pathname}`;
+    const url = new URL(fullUrl);
+
+    const path = url.pathname; // e.g., "/admin/home/product/12345-abcde-Sample%20Title"
+    const regex = /\/admin\/home\/product\/([^\/]+)-([^\/]+)-(.*)/;
+    const match = path.match(regex);
+
+    if (!match || match.length < 4) {
       console.error("Invalid URL format. Expected at least two parts.");
-      router.replace("/404"); // Redirect to 404 if the URL format is invalid
+      router.replace("/404");
       return;
     }
 
-    const [_id, specialID, ...titleParts] = pathParts;
+    const [_fullMatch, _id, specialID, title] = match;
 
     if (!_id || !specialID) {
       router.replace("/404"); // Redirect to 404 if the URL format is invalid
@@ -105,7 +120,6 @@ export default function Id() {
       })
       .finally(() => setIsLoading(false));
   }, [pathname]);
-  
 
   const copyToClipboard = () => {
     if (!data) return;
@@ -144,7 +158,7 @@ export default function Id() {
 
       <PageLayout>
         <div className={styles.idmainbody}>
-        <Logout/>
+          <Logout />
           {/* <p>Current pathname: {pathname}</p> */}
           <div className={styles.producttitle}>
             {data ? data.title : "Loading..."}
