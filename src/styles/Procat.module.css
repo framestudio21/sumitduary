@@ -1,0 +1,94 @@
+.procatmainbody {
+  width: 100%;
+  padding: 0 7rem 1rem 6rem;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  .productcard {
+    border-bottom: 1px dashed #ccc;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .title {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 40px;
+      font-weight: 800;
+      color: #999;
+    }
+
+    .title:hover {
+      color: #000;
+    }
+
+    .ownerdatecomment {
+      display: flex;
+      gap: 10px;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+        font-weight: 700;
+        font-size: 14px;
+
+      .owner {
+        padding: 0 1.5rem 0 0;
+        border-right: 2px dashed #ccc;
+        text-transform: uppercase;
+      }
+      .date {
+        padding: 0 1.5rem 0 1.5rem;
+      }
+
+    }
+
+    .client {
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: justify;
+    }
+
+    .description {
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: justify;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .image {
+      margin: 0 auto;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .procatmainbody {
+    padding: 0 4rem 1rem 3rem;
+
+    .productcard{
+        .title{
+            font-size: 30px;
+        }
+        .ownerdatecomment{
+            flex-direction: column;
+            gap: 5px;
+
+            .owner, .date{
+                padding: 0;
+                border: none;
+            }
+        }
+    }
+  }
+}

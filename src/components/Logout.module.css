@@ -1,0 +1,62 @@
+.topnavbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    padding: 1rem 4rem 1rem 2rem;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    background-color: #000;
+    color: #fff;
+
+  
+    .text {
+      text-transform: uppercase;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .btnsection{
+      display: flex;
+      gap: 20px;
+      flex-wrap: warp;
+    }
+  
+    .logoutbtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.5rem 1rem;
+      outline: none;
+      border: none;
+      background: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      color: #fff;
+}
+  
+    .logoutbtn:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .topnavbar{
+      height: auto;
+      flex-direction: column;
+    }
+    .btnsection{
+      flex-wrap: wrap;
+    }
+  }

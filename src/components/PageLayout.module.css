@@ -1,0 +1,8 @@
+/* layout.module.css */
+.layout{
+    width: 100vw;
+}
+.mainbody{
+    height: auto;
+    overflow-x: hidden;
+}

@@ -1,0 +1,71 @@
+.aboutmainbody {
+  height: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0 0 0;
+
+  .aboutlogo{
+    width: 300px;
+    height: 150px;
+  }
+
+  .paragraphsection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .paragraphheader {
+      font-size: 60px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ccc;
+      letter-spacing: 2px;
+      border-bottom: 2px dashed #ccc;
+    }
+
+    .paragraphtext {
+      font-size: 18px;
+      width: 50%;
+      color: #999;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 1px;
+
+      .hello {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #000;
+      }
+    }
+
+    .paragraphtext span {
+      color: #171717;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin: 0 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .aboutmainbody{
+    width: 100%;
+    padding: 5px;
+
+    .paragraphsection{
+
+      .paragraphheader{
+        text-align: center;
+      }
+      .paragraphtext{
+        width: 90%;
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.errormainbody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(212, 212, 212, 0.56); /* Light beige background */
+  overflow: hidden;
+
+  .backbtn {
+    border: 2px solid #999;
+    padding: 1rem 2.5rem;
+    background: #999;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+  .backbtn:hover{
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+
+  }
+
+  .searchboxdiv {
+    background: white;
+    padding: 50px 80px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+    border-radius: 10px; /* Rounded corners */
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .titlebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .title {
+      font-size: 48px;
+      font-weight: 600;
+      color: #000; /* Light brownish color */
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #5d5d5d;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+
+  .searchbox {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 15px 40px;
+    width: 100%;
+    margin: 0 auto;
+    cursor: text;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+  .searchbox:hover, .searchbox:focus, .searchbox:active {
+    border: 2px solid #ebebeb;
+    background-color: #ebebeb;
+
+    .icon {
+      color: #000;
+    }
+  }
+
+  .icon {
+    color: #a1a1a1;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .searchbar {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    color: #000;
+    font-weight: 500;
+  }
+
+  .searcbar::placeholder {
+    color: #a0a0a0; /* Placeholder text color */
+  }
+}

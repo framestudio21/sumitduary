@@ -1,0 +1,119 @@
+.loginmainbody {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+  
+    .logindiv {
+      width: 30%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+  
+      .logoimage {
+        width: 300px;
+        height: 180px;
+      }
+  
+      .errorMessage{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: red;
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+
+      .successMessage{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: green;
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+
+      .title{
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+        font-size: 30px;
+      }
+  
+      .formdiv {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+  
+        .inputfield {
+          outline: none;
+          border: 2px dashed #ccc;
+          padding: 1rem 2rem;
+          width: 100%;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+          letter-spacing: 2px;
+          cursor: text;
+          font-weight: 500;
+}
+  
+        .inputfield:hover{
+          border: 2px solid #000;
+        }
+        .inputfield:focus{
+          border: 2px solid #000;
+        }
+        .inputfield:active{
+          border: 2px solid #000;
+        }
+  
+        .submitbtn{
+          outline: none;
+          border: 2px solid #ccc;
+          padding: 1rem 2rem;
+          width: 100%;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+          letter-spacing: 2px;
+          cursor: pointer;
+          background: none;
+          text-transform: capitalize;
+          font-weight: 600;
+          font-size: 20px;
+}
+  
+        .submitbtn:hover{
+          border: 2px solid #000;
+          background-color: #000;
+          color: #fff;
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1024px){
+      .loginmainbody{
+  
+          .logindiv{
+              width: 60%;
+          }
+      }
+  }

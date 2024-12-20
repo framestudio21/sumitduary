@@ -1,0 +1,458 @@
+.image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; /* Prevent distortion */
+  display: block; /* Treat image as a block element */
+  margin: 0 auto;
+}
+
+.uploadstatusdiv {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.uploadmainbody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px 0 0;
+  height: calc(100% - 60px);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+
+  .uploadsectionbody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .blocks,
+    .btnblocks {
+      display: flex;
+      padding: 1rem 3rem 1rem 2rem;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+
+      .titlediv,
+      .selectdiv {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .title {
+        width: 50%;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+    }
+    .btnblocks {
+      flex-direction: row;
+    }
+    .inputfield {
+      width: 100%;
+      background: none;
+      padding: 1rem 2rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      outline: none;
+      border: 2px dashed var(--color-dimwhite);
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+
+    .inputfield:hover {
+      border: 2px solid #000;
+      color: #000;
+    }
+
+    .inputfield:focus {
+      border: 2px solid #000;
+      color: #000;
+    }
+
+    .textarea {
+      padding: 1rem 2rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      outline: none;
+      border: 2px dashed var(--color-dimwhite);
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      height: 200px;
+      width: 100%;
+      resize: none;
+    }
+
+    .textarea:hover, .reactquillinputfield:hover, .reactquillinputfield:focus {
+      border: 2px solid #000;
+      color: #000;
+    }
+
+    .textarea:focus {
+      border: 2px solid #000;
+      color: #000;
+    }
+
+    .submitbtn {
+      width: 100%;
+      padding: 0.7rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-transform: capitalize;
+      outline: none;
+      border: none;
+      background: var(--color-silver);
+      letter-spacing: 2px;
+      font-size: 20px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      border: 2px solid transparent;
+    }
+
+    .submitbtn:hover {
+      border: 2px solid #000;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .reactquillinputfield {
+      width: 100%;
+      padding: 2rem 2rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      letter-spacing: 2px;
+      resize: none;
+      max-width: 100%;
+      min-width: 100%;
+      min-height: 500px;
+      outline: none;
+      height: auto;
+      z-index: 0;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+}
+  }
+  .additionalfilesdisplaybox{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+
+    .thumbnailcontainerblocks{
+      width: 100%;
+      min-height: 200px;
+      max-height: 300px;
+    }
+  }
+
+  /* thumbnail image css */
+  .thumbnailcontainerblocks {
+    min-width: 30%;
+    width: auto;
+    margin: 0 auto;
+    min-height: 200px;
+    max-height: 400px;
+    border-radius: 10px;
+    border: 2px solid var(--color-white);
+    background-color: var(--color-silver);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+
+
+
+
+  .uploadBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .imagename {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .thumbnailname {
+        background-color: #ccc;
+        width: 100%;
+        height: 15%;
+        border-radius: 0 0 8px 8px;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-align: center;
+        word-wrap: break-word;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        -webkit-border-radius: 0 0 8px 8px;
+        -moz-border-radius: 0 0 8px 8px;
+        -ms-border-radius: 0 0 8px 8px;
+        -o-border-radius: 0 0 8px 8px;
+      }
+    }
+
+    .addPhoto {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-black);
+      font-size: 20px;
+      text-transform: capitalize;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      .icon {
+        font-size: 60px;
+      }
+    }
+
+    .thumbnailinputfield {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .thumbnailImage {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: contain;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+    }
+
+    .thumbnailrevomeicon {
+      position: absolute;
+      top: -15px;
+      right: -20px;
+      border: 2px solid #000;
+
+      padding: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      background: #000;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      -ms-border-radius: 100px;
+      -o-border-radius: 100px;
+      cursor: pointer;
+
+      .icon {
+        color: #fff;
+        font-size: 40px;
+      }
+    }
+  }
+
+
+  .thumbnailcontainerblocks:hover,
+  .thumbnailcontainerblocks:focus {
+    border: 2px solid #000;
+    background-color: #000;
+
+    .uploadBox {
+      .addPhoto {
+        color: #fff;
+      }
+    }
+  }
+
+  /* product file css */
+  .productfilecontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 2px dashed var(--color-dimwhite);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+
+    .uploadButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 80px;
+      background-color: var(--color-silver);
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+
+      .fileinputfield {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .icondiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        font-weight: 600;
+        color: #000;
+
+        .icon {
+          font-size: 50px;
+        }
+      }
+    }
+
+    .uploadButton:hover,
+    .uploadButton:focus {
+      background-color: #000;
+
+      .icondiv {
+        color: #fff;
+      }
+    }
+
+    .thumbnailContainer {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+
+      .thumbnailpreview {
+        width: calc(100% / 4.1);
+        height: 300px;
+        border-radius: 10px;
+        position: relative;
+        cursor: pointer;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        border: 2px solid transparent;
+      }
+
+      .thumbnailpreview:hover,
+      .thumbnailpreview:focus {
+        border: 2px solid var(--color-black);
+      }
+
+      .thumbnailrevomeicon {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        background: #000;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+        cursor: pointer;
+
+        .icon {
+          color: #fff;
+          font-size: 40px;
+        }
+      }
+
+      .imagename {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .thumbnailimg {
+        object-fit: cover;
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        position: relative;
+      }
+
+      .thumbnailname {
+        background-color: #ccc;
+        width: 100%;
+        height: 20%;
+        border-radius: 0 0 8px 8px;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        text-align: center;
+        word-wrap: break-word;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        -webkit-border-radius: 0 0 8px 8px;
+        -moz-border-radius: 0 0 8px 8px;
+        -ms-border-radius: 0 0 8px 8px;
+        -o-border-radius: 0 0 8px 8px;
+      }
+    }
+  }
+}
