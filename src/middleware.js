@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 import { jwtVerify } from 'jose';
 
 const PROTECTED_ROUTES = /^\/admin(?!\/login).*$/;
-const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+const JWT_SECRET = process.env.JWT_SECRET || "e8ad46188b56c0b64a9b58262a0e114f8f777bee4e0ff35b7b5f72dda5786f40";
 
 export const config = {
   matcher: ["/admin/:path*"],
   // runtime: "experimental-edge", // Use Edge runtime for the middleware
-  // runtime: "edge", // Use Edge runtime for the middleware
+  runtime: "edge", // Use Edge runtime for the middleware
 };
 
 export async function middleware(req) {
@@ -36,6 +36,7 @@ export async function middleware(req) {
   }
 
   if (PROTECTED_ROUTES.test(pathname)) {
+    console.log("Middleware Token from cookies:", token);
     if (!token) {
       console.warn("Token is missing or empty");
       const loginUrl = new URL("/admin/login", req.url);

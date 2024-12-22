@@ -35,7 +35,12 @@ export default function Login() {
       const data = await response.json();
   
       if (response.ok) {
-        router.push("/admin/home");
+        setSuccessMessage("Login successful!");
+        setError("");
+        setTimeout(() => {
+          router.push("/admin/home");
+        }, 500);
+        // router.push("/admin/home");
         // window.location.href = data.redirect || "/admin/home";
       } else {
         setError(data.error || "Login failed");
