@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "e8ad46188b56c0b64a9b58262a0e114f8f
 export const config = {
   matcher: ["/admin/:path*"],
   // runtime: "experimental-edge", // Use Edge runtime for the middleware
-  runtime: "edge", // Use Edge runtime for the middleware
+  // runtime: "edge", // Use Edge runtime for the middleware
 };
 
 export async function middleware(req) {
