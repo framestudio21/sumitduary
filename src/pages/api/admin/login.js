@@ -26,11 +26,18 @@ export default async function handler(req, res) {
       }
 
       // Generate JWT token
+      // const token = jwt.sign(
+      //   { userId: user._id, email: user.email },
+      //   process.env.JWT_SECRET || "e8ad46188b56c0b64a9b58262a0e114f8f777bee4e0ff35b7b5f72dda5786f40",
+      //   { expiresIn: "1h" }
+      // );
+
       const token = jwt.sign(
         { userId: user._id, email: user.email },
-        process.env.JWT_SECRET || "e8ad46188b56c0b64a9b58262a0e114f8f777bee4e0ff35b7b5f72dda5786f40",
-        { expiresIn: "1h" }
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" } // Token valid for 1 hour
       );
+      
 
       // Set the token in HTTP-only cookie
       // res.setHeader("Set-Cookie", `token=${token}; Path=/; HttpOnly; Secure; SameSite=Strict;`);

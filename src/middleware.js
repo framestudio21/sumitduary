@@ -20,8 +20,9 @@ export async function middleware(req) {
   if (pathname === "/admin") {
     if (token) {
       try {
-        const secretKey = new TextEncoder().encode(JWT_SECRET);
-        await jwtVerify(token, secretKey);
+        // const secretKey = new TextEncoder().encode(JWT_SECRET);
+        // await jwtVerify(token, secretKey);
+        await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET || JWT_SECRET || "e8ad46188b56c0b64a9b58262a0e114f8f777bee4e0ff35b7b5f72dda5786f40"));
       } catch (err) {
         console.error("JWT Verification failed. Reason:", err.message);
         const loginUrl = new URL("/admin/login", req.url);
