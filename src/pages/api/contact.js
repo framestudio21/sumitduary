@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb"; // Required for MongoDB _id operations
 
 
 import { connectToDatabase } from "../../lib/mongodb";
-const { uploadFileToDrive } = require("../../lib/newgoogledrive");
+const { uploadFileToDrive } = require("../../lib/contactGoogleDrive");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -52,6 +52,11 @@ const handler = async (req, res) => {
                 file,
                 process.env.GOOGLE_DRIVE_CONTACT_FOLDER_ID
               );
+              if (!uploadedFile.webViewLink || !uploadedFile.webContentLink) {
+                return res.status(500).json({
+                  message: `Failed to upload file ${file.originalname} to Google Drive.`,
+                });
+              }
               referenceImagesLinks[`file${index + 1}`] = {
                 id: uploadedFile.id,
                 name: uploadedFile.name,

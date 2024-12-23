@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import styles from "./ImageCarousel.module.css";
@@ -9,7 +9,35 @@ const ImageCarousel = ({ images }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const imagesPerView = Math.min(3, images.length); // Max three images in view
+  // const imagesPerView = Math.min(4, images.length); // Max three images in view
+
+  const [imagesPerView, setImagesPerView] = useState(4); // Default to 4 for large screens
+
+  useEffect(() => {
+    const updateImagesPerView = () => {
+      if (window.matchMedia("(max-width: 480px)").matches) {
+        setImagesPerView(1);
+      } else if (window.matchMedia("(max-width: 720px)").matches) {
+        setImagesPerView(2);
+      } else if (window.matchMedia("(max-width: 1020px)").matches) {
+        setImagesPerView(3);
+      } else {
+        setImagesPerView(4);
+      }
+    };
+
+    // Initial setup
+    updateImagesPerView();
+
+    // Add event listener for resizing
+    window.addEventListener("resize", updateImagesPerView);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("resize", updateImagesPerView);
+    };
+  }, []);
+
   const customStyle = {
     width: `calc(98% / ${imagesPerView})`, // Dynamically calculate width
   };
@@ -80,7 +108,7 @@ const ImageCarousel = ({ images }) => {
       {/* Carousel */}
       <div className={styles.carouselcontainer}>
         <button
-          className={styles.carouselbtn}
+          className={styles.leftcarouselbtn}
           onClick={goToPrevSlide}
           disabled={currentStartIndex === 0}
         >
@@ -106,7 +134,7 @@ const ImageCarousel = ({ images }) => {
         </div>
 
         <button
-          className={styles.carouselbtn}
+          className={styles.rightcarouselbtn}
           onClick={goToNextSlide}
           disabled={currentStartIndex + imagesPerView >= images.length}
         >
@@ -151,19 +179,19 @@ const ImageCarousel = ({ images }) => {
           </i>
           <div className={styles.imagename}>{images[currentIndex].name}</div>
           <button
-            // onClick={() => {
-            //   // window.open(getDirectDriveLink(images[currentIndex].src))
-            //   const link = document.createElement("a");
-            //   link.href = images[currentIndex].webContentLink; // Use webContentLink for direct download
-            //   link.download = images[currentIndex].name; // Suggest a filename for download
-            //   link.click();
-            // }}
-            onClick={() =>
-              downloadAsJPG(
-                images[currentIndex].webContentLink || getDirectDriveLink(images[currentIndex].src),
-                images[currentIndex].name
-              )
-            }
+            onClick={() => {
+              window.open(getDirectDriveLink(images[currentIndex].src))
+              const link = document.createElement("a");
+              link.href = images[currentIndex].webContentLink; // Use webContentLink for direct download
+              link.download = images[currentIndex].name; // Suggest a filename for download
+              link.click();
+            }}
+            // onClick={() =>
+            //   downloadAsJPG(
+            //     images[currentIndex].webContentLink || getDirectDriveLink(images[currentIndex].src),
+            //     images[currentIndex].name
+            //   )
+            // }
             className={styles.downloadbtn}
           >
             <i className={`material-icons ${styles.icon}`}>download</i> Download

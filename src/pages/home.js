@@ -20,15 +20,16 @@ export default function Home() {
       try {
         const response = await fetch(`/api/getProduct`);
         const data = await response.json();
-
+  
         if (response.ok) {
           // Filter products by type "product" and map relevant data
           const photographyProducts = data.products
             .filter((product) => product.type === "product")
             .map((product) => ({
               ...product,
-            }));
-
+            }))
+            .reverse(); // Reverse the array to make the last item first
+  
           setProducts(photographyProducts);
         } else {
           console.error("Error fetching data:", data.error);
@@ -39,12 +40,13 @@ export default function Home() {
         setLoading(false); // Set loading to false after data is fetched
       }
     };
-
+  
     fetchFiles();
   }, []);
+  
 
   // Check the products and the image URLs
-  console.log(products);
+  // console.log(products);
 
   return (
     <>

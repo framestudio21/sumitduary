@@ -1,12 +1,11 @@
 .carouselcontainer {
   width: 100%;
-  height: 400px;
+  height: 350px;
   display: flex;
   align-items: center;
-  padding: 5px 5px 10px 5px;
-  gap: 5px;
+  position: relative;
 
-  .carouselbtn {
+  .leftcarouselbtn, .rightcarouselbtn {
     width: 50px;
     height: 50px;
     border: none;
@@ -23,17 +22,28 @@
     -moz-border-radius: 100px;
     -ms-border-radius: 100px;
     -o-border-radius: 100px;
+    z-index: 99;
     .icon {
       font-size: 40px;
     }
   }
 
-  .carouselbtn:hover {
+  .leftcarouselbtn{
+    position: absolute;
+    left: 10px;
+  }
+
+  .rightcarouselbtn{
+    position: absolute;
+    right: 10px;
+  }
+
+  .leftcarouselbtn:hover, .rightcarouselbtn:hover {
     background-color: var(--color-black);
     color: var(--color-silver);
   }
 
-  .carouselbtn:disabled {
+  .leftcarouselbtn:disabled, .rightcarouselbtn:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -62,15 +72,6 @@
       -ms-border-radius: 10px;
       -o-border-radius: 10px;
 }
-
-    /* .carouselimage:hover {
-      transform: scale(1.2);
-      z-index: 9;
-      -webkit-transform: scale(1.2);
-      -moz-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      -o-transform: scale(1.2);
-    } */
   }
 }
 
@@ -78,8 +79,8 @@
   position: fixed;
   top: 0;
   left: 60px;
-  width: calc(100vw - 60px);
-  height: 100vh;
+  width: calc(100% - 60px);
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
@@ -110,7 +111,7 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     z-index: 99;
-}
+  }
 
   .modalcontentimage {
     width: auto;
@@ -124,7 +125,7 @@
     -o-border-radius: 10px;
   }
 
-  .imagename{
+  .imagename {
     text-transform: uppercase;
     position: absolute;
     top: 50px;
@@ -144,7 +145,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-}
+  }
 
   .downloadbtn {
     position: absolute;
@@ -194,8 +195,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    .icon
-{
+    .icon {
       font-size: 40px;
       font-weight: 700;
     }
@@ -208,5 +208,50 @@
   .modelbtn:hover {
     color: #000;
     background-color: var(--color-white);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carouselcontainer {
+  }
+
+  .modal {
+    font-size: 14px;
+    width: 100%;
+    left: 0;
+    height: calc(100% - 60px);
+    top: 60px;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    .modalimagebody {
+      gap: 5px;
+      justify-content: center;
+
+      .modelbtn {
+        display: none;
+      }
+    }
+
+    .closebtn {
+      font-size: 35px;
+    }
+
+    .imagename {
+      width: 80%;
+      top: 100px;
+      font-size: 14px;
+      /* bottom: 40px; */
+    }
+
+    .downloadbtn {
+      font-size: 14px;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+    }
   }
 }

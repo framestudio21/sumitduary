@@ -3,7 +3,7 @@
 import multer from "multer";
 import crypto from "crypto";
 import { connectToDatabase } from "../../lib/mongodb";
-const { uploadFileToDrive } = require("../../lib/googledrive");
+const { uploadFileToDrive } = require("../../lib/productGoogleDrive");
 
 const storage = multer.memoryStorage();
 const upload = multer({ dest: "/tmp" });

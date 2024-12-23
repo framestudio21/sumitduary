@@ -418,6 +418,26 @@
             }
           }
         }
+
+        .imageblocks{
+          height: auto;
+
+          .imageUploadContainer{
+            flex-wrap: wrap;
+            height: auto;
+          }
+
+          .imagePreview{
+            width: calc(100% / 2.1);
+            height: 160px;
+          }
+
+          .addImageLabel{
+            width: calc(100% / 2.1);
+            height: 160px;
+          }
+        }
+
       }
     }
   }

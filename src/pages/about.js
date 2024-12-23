@@ -30,15 +30,15 @@ export default function About () {
             <div className={styles.paragraphtext}>
               <span className={styles.hello}>Hello !</span>
               <br />
-              We are a group of people, work as a
-              <span>visual designer / graphic designer and website developer</span> based in
-              kolkata, India. We are passionate abou making detailed, interative
-              and created designs, regardless of the medium, we are working
+              I am<span>sumit kumar duary</span>a
+              <span>visual designer / graphic designer and website developer</span>based in
+              kolkata, India. I am passionate about making detailed, interative
+              and created designs, regardless of the medium, i am working
               with.
               <br />
-              We are passionate with other topics that interest us.
+              <span>I am passionate with other topics that interest us.</span>
             </div>
-            <div className={styles.paragraphheader}>About Us</div>
+            <div className={styles.paragraphheader}>About Me</div>
           </div>
         </div>
       </Layout>

@@ -18,16 +18,17 @@ export default function Photography() {
       try {
         const response = await fetch(`/api/getProduct`);
         const data = await response.json();
-
+  
         if (response.ok) {
           const photographyProducts = data.products
             .filter((product) => product.type === "photography")
             .map((product) => ({
               ...product,
               thumbnail: getDirectDriveLink(product.thumbnail.webViewLink), // Convert to direct view link
-              thumbnailDownload: product.thumbnail.webcontentlink, // Direct download link
-            }));
-
+              thumbnailDownload: product.thumbnail.webContentLink, // Direct download link
+            }))
+            .reverse(); // Reverse the order to make the last item first
+  
           setProducts(photographyProducts);
         } else {
           console.error("Error fetching data:", data.error);
@@ -38,9 +39,10 @@ export default function Photography() {
         setLoading(false); // Set loading to false after data is fetched
       }
     };
-
+  
     fetchFiles();
   }, []);
+  
 
   return (
     <>

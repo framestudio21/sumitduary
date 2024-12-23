@@ -1,7 +1,7 @@
 import multer from "multer";
 import { ObjectId } from "mongodb"; // Import ObjectId
 import { connectToDatabase } from "../../lib/mongodb";
-import { uploadFileToDrive } from "../../lib/googledrive";
+import { uploadFileToDrive } from "../../lib/productGoogleDrive";
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
