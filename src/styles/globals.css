@@ -4,34 +4,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 @font-face {
-  font-family: "Raleway", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-}
-@font-face {
-  font-family: "Roboto", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-}
-@font-face {
-  font-family: "Roboto Mono", monospace;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
-}
-@font-face {
-  font-family: "Josefin Sans", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
-}
-@font-face {
-  font-family: "Josefin Slab", serif;
-  src: url("https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap");
-}
-@font-face {
-  font-family: "Montserrat", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-}
-@font-face {
-  font-family: "PT Serif", serif;
-  src: url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-}
-@font-face {
   font-family: "Poppins", sans-serif;
   src: url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 } 
@@ -52,10 +24,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  /* font-family: "Raleway", sans-serif; */
   font-family: "Poppins", sans-serif;
-  /* font-family: "Roboto Mono", monospace; */
-  /* font-family: "Montserrat", sans-serif; */
   scroll-behavior: smooth;
 }
 *::-webkit-scrollbar {

@@ -30,15 +30,15 @@ export default function Navbar ({ onToggle }) {
             <div className={styles.square}></div>
             <div className={styles.square}></div>
           </div>
-          {/* <Image src={MenuBargerIcon} width={20} height={20} alt="menu" className={styles.menubargericon} /> */}
           </button>
-          <Link href="/">
+          <Link href="/about" className={styles.logolink}>
             <Image
-              src={NavBarMainLogo}
+              // src={NavBarMainLogo}
+              src="/logo/sumitduarylogowhite1.svg"
               className={styles.mainlogo}
               alt="Logo"
-              width={120} // Correct width
-              height={40} // Correct height
+              width={140} // Correct width
+              height={50} // Correct height
               optimized="true"
               id="mainlogo"
               priority
@@ -49,6 +49,7 @@ export default function Navbar ({ onToggle }) {
         {/* Full display navbar */}
         {isOpen && (
           <div className={styles.navbar}>
+
             <div className={styles.middlesection}>
               <Link href="/" className={styles.navlist}>
                 <li>Home</li>
@@ -68,9 +69,9 @@ export default function Navbar ({ onToggle }) {
             </div>
 
             <div className={styles.bottomsection}>
-              Powered by Frame Studio
+              Powered by <span className={styles.span}>sumitduary</span>
               <br />
-              @ All rights reserved by Frame Studio. {year}
+              @ All rights reserved by Sumit Kumar Duary. {year}
             </div>
           </div>
         )}

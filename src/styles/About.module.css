@@ -5,9 +5,9 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  padding: 40px 0 0 0;
+  padding: 40px 40px 0 0;
 
-  .aboutlogo{
+  .aboutlogo {
     width: 300px;
     height: 150px;
   }
@@ -50,22 +50,126 @@
       font-weight: 900;
       margin: 0 5px;
     }
+
+    .imagetextsection {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+      gap: 30px;
+      width: 60%;
+
+      .imagesection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .sumitimage {
+          width: 150px;
+          height: 150px;
+          border-radius: 200px;
+          -webkit-border-radius: 200px;
+          -moz-border-radius: 200px;
+          -ms-border-radius: 200px;
+          -o-border-radius: 200px;
+        }
+
+        .paragraph{
+          text-align: center;
+          text-transform: lowercase;
+          letter-spacing: 1px;
+          font-weight: 600;
+        }
+      }
+
+      .textsection {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        flex-wrap: wrap;
+        padding: 0 40px;
+
+        .iconlink {
+          display: flex;
+          flex-direction: column;
+          border: 2px dashed #999;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          padding: 10px;
+          border-radius: 10px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          -o-border-radius: 10px;
+          cursor: pointer;
+          width: 180px;
+          height: 140px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 700;
+          font-size: 15px;
+          color: #999;
+
+          .icon {
+            width: 70px;
+            height: 70px;
+            transition: filter 0.3s ease;
+          }
+        }
+
+        .iconlink:hover,
+        .iconlink:focus {
+          border: 2px solid #000;
+          color: #ffff;
+          background-color: #000;
+
+          .icon {
+            filter: invert(1);
+          }
+        }
+      }
+    }
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .aboutmainbody{
+  .aboutmainbody {
     width: 100%;
     padding: 5px;
 
-    .paragraphsection{
-
-      .paragraphheader{
+    .paragraphsection {
+      .paragraphheader {
         text-align: center;
         line-height: 55px;
       }
-      .paragraphtext{
+      .paragraphtext {
         width: 90%;
+      }
+
+      .imagetextsection {
+        width: 90%;
+        margin-bottom: 10px;
+        gap: 30px;
+        padding: 20px 0 0 0;
+
+        .imagesection{
+          gap: 30px;
+          .paragraph{
+            /* text-align: justify; */
+          }
+        }
+
+
+        .textsection {
+          padding: 10px;
+
+          .iconlink {
+            width: calc(100% / 2.1);
+          }
+        }
       }
     }
   }

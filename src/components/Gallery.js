@@ -85,52 +85,6 @@ function Gallery({ images }) {
     );
   };
 
-  const downloadAsJPG = async (imageURL, fileName) => {
-    try {
-      // Ensure fileName is defined and valid
-      if (!fileName) {
-        fileName = "image"; // Fallback filename
-      }
-  
-      // Proxy the image to bypass CORS
-      const proxiedURL = `http://localhost:4000/proxy?url=${encodeURIComponent(imageURL)}`;
-      const img = new window.Image();
-      img.crossOrigin = "anonymous";
-      img.src = proxiedURL;
-  
-      img.onload = () => {
-        try {
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-  
-          canvas.width = img.width;
-          canvas.height = img.height;
-  
-          context.drawImage(img, 0, 0);
-  
-          const jpgDataUrl = canvas.toDataURL("image/jpeg", 0.9);
-  
-          const link = document.createElement("a");
-          link.href = jpgDataUrl;
-  
-          // Safely replace file extension
-          link.download = fileName.replace(/\.[^/.]+$/, ".jpg");
-          link.click();
-        } catch (error) {
-          console.error("Error converting image:", error);
-        }
-      };
-  
-      img.onerror = (err) => {
-        console.error("Failed to load image for download:", err);
-        alert("Failed to load the image. Check the URL or CORS settings.");
-      };
-    } catch (error) {
-      console.error("Error during image download:", error);
-    }
-  };
-  
-
   return (
     <div>
       <div className={styles.gallery}>
@@ -210,13 +164,16 @@ function Gallery({ images }) {
           </div>
           <button
             className={styles.imagedownload}
-            onClick={() =>
-              downloadAsJPG(
-                images[currentIndex].thumbnailDownload ||
-                  getDirectDriveLink(images[currentIndex].thumbnail),
-                images[currentIndex].name
-              )
-            }
+            onClick={(e) => {
+              // window.open(getDirectDriveLink(images[currentIndex].thumbnailDownload))
+              // e.stopPropagation(); // Prevent click event from propagating
+              const link = document.createElement("a");
+              link.href = images[currentIndex].thumbnailDownload; // Use thumbnailDownload for direct download
+              link.download = `${images[currentIndex].name || "image"}.webp`; // Suggest a filename with .webp extension
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link); // Clean up the DOM
+            }}
           >
             <i className={`material-symbols-outlined ${styles.icon}`}>
               download
