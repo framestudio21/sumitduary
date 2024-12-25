@@ -12,7 +12,6 @@ import Navbar from '@/components/Navbar';
 import Layout from '@/components/PageLayout';
 import styles from "@/styles/Login.module.css";
 
-import Framelogo from "@/image/spacelogoblack.svg"
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -61,7 +60,7 @@ export default function Login() {
         <div className={styles.loginmainbody}>
           <div className={styles.logindiv}>
             <Image
-              src={Framelogo}
+              src="/logo/sumitduarylogoblack1.svg"
               className={styles.logoimage}
               alt="Frame-Logo"
               width={200}

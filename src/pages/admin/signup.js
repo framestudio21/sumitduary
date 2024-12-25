@@ -7,17 +7,17 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 
+import Logout from '../../components/Logout';
 import Navbar from '../../components/Navbar';
 import Layout from '../../components/PageLayout';
 import styles from "../../styles/Login.module.css";
 
-import Framelogo from "@/image/spacelogoblack.svg"
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const router = useRouter();
 
   const handleSignup = async (e) => {
@@ -33,15 +33,19 @@ export default function Login() {
       });
   
       if (response.ok) {
-        window.alert("Signup successful! Redirecting to login page..."); // Alert on success
+        window.alert("Signup successful! Redirecting to login page..."); 
+        setSuccessMessage("Login successful!");// Alert on success
+        setError("");
         router.push('/admin/login'); // Redirect after successful signup
       } else {
         const data = await response.json();
         setError(data.message || 'Error during signup');
+        setSuccessMessage("");
       }
     } catch (error) {
       setError('An unexpected error occurred.');
       console.error('Signup error:', error);
+      setSuccessMessage("");
     }
   };
   
@@ -51,10 +55,11 @@ export default function Login() {
     <>
       <Navbar />
       <Layout>
-        <div className={styles.loginmainbody}>
+          <Logout/>
+        <div className={styles.signunmainbody}>
           <div className={styles.logindiv}>
             <Image
-              src={Framelogo}
+              src="/logo/sumitduarylogoblack1.svg"
               className={styles.logoimage}
               alt="Frame-Logo"
               width={200}
@@ -80,7 +85,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               {error && <p className={styles.errorMessage}>{error}</p>}
-              {success && <p className={styles.successMessage}>{success}</p>}
+              {successMessage && <p className={styles.successMessage}>{successMessage}</p>} {/* Display success message */}
               <button type="submit" className={styles.submitbtn}>
                 Submit
               </button>

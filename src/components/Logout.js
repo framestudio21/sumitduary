@@ -48,6 +48,10 @@ export default function Logout() {
       const handleHomeClick = () => {
         router.push("/admin/home");
       };
+
+      const handleSignUpClick = () => {
+        router.push("/admin/signup");
+      };
     
   return (
     <>
@@ -56,6 +60,9 @@ export default function Logout() {
             <div className={styles.text}>Welcome back</div>
             
             <div className={styles.btnsection}>
+            <button type="button" className={styles.logoutbtn} onClick={handleSignUpClick}>
+              sign up
+            </button>
             <button type="button" className={styles.logoutbtn} onClick={handleHomeClick}>
               home
             </button>
