@@ -256,7 +256,7 @@ export default function AdminContact() {
   const openModal = (contact) => setSelectedContact(contact);
   const closeModal = () => setSelectedContact(null);
 
-  console.log(contacts);
+  // console.log(contacts);
 
   const groupByStatus = (data) => {
     return data.reduce((groups, contact) => {

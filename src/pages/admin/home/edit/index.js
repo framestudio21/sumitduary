@@ -33,7 +33,7 @@ export default function Edit() {
       const response = await fetch(`/api/getProduct`);
       const data = await response.json();
 
-      console.log(data);
+      // console.log(data);
 
       if (response.ok) {
         const categorizedProducts = data.products.reduce((acc, product) => {

@@ -77,7 +77,6 @@
   }
 }
 
-
 .idmainbody {
   width: 100%;
   display: flex;
@@ -113,7 +112,7 @@
       font-weight: 800;
     }
 
-    .date{
+    .date {
       color: #999;
     }
 
@@ -132,7 +131,7 @@
     }
   }
 
-  .typecategory{
+  .typecategory {
     display: flex;
     width: 100%;
     align-items: center;
@@ -140,7 +139,6 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 800;
-
   }
 
   .bodydatadiv {
@@ -154,7 +152,7 @@
     text-overflow: ellipsis;
     display: -webkit-box;
 
-    .dataparagraph{
+    .dataparagraph {
       width: 100%;
     }
   }
@@ -164,7 +162,6 @@
     flex-direction: column;
     width: 100%;
     gap: 15px;
-
 
     .title {
       text-transform: uppercase;
@@ -181,13 +178,12 @@
     }
   }
 
-  .clientdetailsdiv{
+  .clientdetailsdiv {
     display: flex;
     gap: 20px;
     align-items: center;
 
-
-    .title{
+    .title {
       text-transform: uppercase;
       letter-spacing: 3px;
       font-size: 25px;
@@ -200,7 +196,7 @@
       font-weight: 600;
       text-align: justify;
     }
-}
+  }
 
   .productlink {
     width: 100%;
@@ -226,7 +222,7 @@
       justify-content: end;
       text-align: right;
 
-      .placeholder{
+      .placeholder {
         text-align: right;
       }
     }
@@ -235,19 +231,18 @@
       text-decoration: underline;
     }
 
-    .placeholder{
+    .placeholder {
       width: 100%;
       font-weight: 600;
       color: var(--color-gray);
     }
   }
 
-
   .cardcarousel {
     display: flex;
     gap: 20px;
     height: 400px;
-  
+
     .cardbody {
       width: calc(100% / 4);
       height: 400px;
@@ -259,7 +254,7 @@
       -ms-border-radius: 12px;
       -o-border-radius: 12px;
       cursor: pointer;
-  
+
       .cardimage {
         width: 100%;
         height: 200px;
@@ -269,7 +264,7 @@
         -ms-border-radius: 10px 10px 0 0;
         -o-border-radius: 10px 10px 0 0;
       }
-  
+
       .cardtext {
         height: 180px;
         display: flex;
@@ -282,7 +277,7 @@
         -moz-border-radius: 0 0 10px 10px;
         -ms-border-radius: 0 0 10px 10px;
         -o-border-radius: 0 0 10px 10px;
-  
+
         .cardtitle {
           text-transform: uppercase;
           letter-spacing: 1px;
@@ -293,7 +288,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-  
+
         .carddescription {
           letter-spacing: 1px;
           font-size: 14px;
@@ -304,21 +299,21 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-  
+
         .cardlink {
           text-transform: lowercase;
         }
-  
+
         .cardlink:hover {
           text-decoration: underline;
         }
       }
     }
-  
+
     .cardbody:hover {
       .cardtext {
         background-color: #ccc;
-  
+
         .cardlink {
           font-weight: 600;
         }
@@ -328,19 +323,19 @@
 }
 
 @media screen and (max-width: 1020px) {
-  .copylink{
+  .copylink {
     display: none;
-   }
-   .copySuccess{
+  }
+  .copySuccess {
     display: none;
-   }
-   .socialmedialinkdiv{
+  }
+  .socialmedialinkdiv {
     display: none;
-   }
-   .backbtn{
+  }
+  .backbtn {
     display: none;
-   }
-   
+  }
+
   .idmainbody {
     padding: 0 6rem 1rem 3rem;
 
@@ -391,19 +386,19 @@
 }
 
 @media screen and (max-width: 800px) {
-  .copylink{
+  .copylink {
     display: none;
-   }
-   .copySuccess{
+  }
+  .copySuccess {
     display: none;
-   }
-   .socialmedialinkdiv{
+  }
+  .socialmedialinkdiv {
     display: none;
-   }
-   .backbtn{
+  }
+  .backbtn {
     display: none;
-   }
-   
+  }
+
   .idmainbody {
     padding: 0 6rem 1rem 3rem;
 
@@ -428,7 +423,7 @@
     }
     .productlink {
       flex-wrap: wrap;
-  }
+    }
 
     .cardcarouselbody {
       .cardcarousel {
@@ -442,69 +437,71 @@
   }
 }
 
-@media screen and (max-width: 400px) {
-
-  .loadingOverlay{
+@media screen and (max-width: 500px) {
+  .loadingOverlay {
     left: 0;
   }
 
- .copylink{
-  display: none;
- }
- .copySuccess{
-  display: none;
- }
-
- .idmainbody{
-  padding: 0.5rem 0.5rem 1rem 0.5rem;
-
-  .producttitle{
-    margin: 30px 0 10px 0;
-    line-height: 40px;
+  .copylink {
+    display: none;
+  }
+  .copySuccess {
+    display: none;
   }
 
-  .producttypeowner{
-    width: 100%;
-    font-size: 14px;
+  .idmainbody {
+    padding: 0.5rem 0.8rem 1rem 0.8rem;
 
-    .type{
-    width: 100%;
-      flex-direction: column;
+    .producttitle {
+      margin: 30px 0 10px 0;
+      line-height: 40px;
+      font-size: 40px;
+    }
+
+    .producttypeowner {
+      width: 100%;
+      font-size: 14px;
+
+      .type {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+    }
+
+    .typecategory {
       align-items: center;
+      width: 100%;
+      flex-direction: column;
+      font-size: 14px;
+    }
+
+    .clientdetailsdiv,
+    .descriptiondiv {
+      flex-direction: column;
+      align-items: flex-start;
       gap: 0;
+      font-size: 14px;
+    }
+
+    .cardcarousel {
+      flex-direction: column;
+      margin: 0 0 5px 0;
+      overflow-x: scroll;
+      flex-wrap: wrap;
+
+      .cardbody {
+        border-radius: 10px 10px 0 0;
+        width: 100%;
+        /* width: 1000px; */
+        /* width: calc(100% / 2.1); */
+        border-bottom: 2px dashed #ccc;
+        -webkit-border-radius: 10px 10px 0 0;
+        -moz-border-radius: 10px 10px 0 0;
+        -ms-border-radius: 10px 10px 0 0;
+        -o-border-radius: 10px 10px 0 0;
+      }
     }
   }
-
-  .typecategory{
-    align-items: center;
-    width: 100%;
-    flex-direction: column;
-    font-size: 14px;
-  }
-
-  .clientdetailsdiv, .descriptiondiv{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    font-size: 14px;
-  }
-
-  .cardcarousel{
-
-    flex-direction: column;
-    margin: 0 0 5px 0;
-
-    .cardbody{
-      border-radius: 10px 10px 0 0;
-      width: 100%;
-      border-bottom: 2px dashed #ccc;
-      -webkit-border-radius: 10px 10px 0 0;
-      -moz-border-radius: 10px 10px 0 0;
-      -ms-border-radius: 10px 10px 0 0;
-      -o-border-radius: 10px 10px 0 0;
-}
-  }
-
- }
-
 }

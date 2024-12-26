@@ -163,16 +163,15 @@
 
         .productlink {
           width: 35%;
-        }
-
-        .productImage {
-          width: 100%;
-          height: 100%;
-          border-radius: 6px 0 0 6px;
-          -webkit-border-radius: 6px 0 0 6px;
-          -moz-border-radius: 6px 0 0 6px;
-          -ms-border-radius: 6px 0 0 6px;
-          -o-border-radius: 6px 0 0 6px;
+          .productImage {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px 0 0 6px;
+            -webkit-border-radius: 6px 0 0 6px;
+            -moz-border-radius: 6px 0 0 6px;
+            -ms-border-radius: 6px 0 0 6px;
+            -o-border-radius: 6px 0 0 6px;
+          }
         }
 
         .cardtextsection {
@@ -188,7 +187,7 @@
           -moz-border-radius: 0 10px 10px 0;
           -ms-border-radius: 0 10px 10px 0;
           -o-border-radius: 0 10px 10px 0;
-}
+        }
 
         .productidspan {
           font-weight: 800;
@@ -267,6 +266,62 @@
             -moz-border-radius: 100px;
             -ms-border-radius: 100px;
             -o-border-radius: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .editmainpagebody {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .titleandsearchbar {
+    padding: 20px 20px;
+
+    .searchbar {
+      padding: 16px 20px;
+    }
+
+    .selectoption {
+      flex-direction: column;
+
+      .selectwindow {
+        width: 100%;
+      }
+    }
+  }
+
+  .productsDisplay {
+    .productTypeSection {
+      .productGrid {
+        .productCard {
+          width: 100%;
+          height: auto;
+          flex-direction: column;
+          .productlink {
+            width: 100%;
+            height: 200px;
+            .productImage {
+              border-radius: 10px 10px 0 0;
+              -webkit-border-radius: 10px 10px 0 0;
+              -moz-border-radius: 10px 10px 0 0;
+              -ms-border-radius: 10px 10px 0 0;
+              -o-border-radius: 10px 10px 0 0;
+            }
+          }
+          .cardtextsection {
+            width: 100%;
+          }
+          .cardtextsection:hover {
+            border-radius: 0 0 10px 10px;
+            -webkit-border-radius: 0 0 10px 10px;
+            -moz-border-radius: 0 0 10px 10px;
+            -ms-border-radius: 0 0 10px 10px;
+            -o-border-radius: 0 0 10px 10px;
           }
         }
       }

@@ -58,68 +58,6 @@
     }
 }
 
-@media only screen and (max-width: 480px) {
-    .adminhomemainbody {
-
-        .productsection {
-
-            .productimage {
-
-                .imagelink{
-                    width: 100%;
-                }
-            }
-        }
-    }
-}
-
-@media only screen and (max-width: 720px) {
-    .adminhomemainbody {
-
-        .productsection {
-
-            .productimage {
-
-                .imagelink{
-                    width: calc( 100% / 2.07 );
-                }
-            }
-        }
-    }
-}
-
-
-@media only screen and (max-width: 1020px) {
-    .adminhomemainbody {
-
-        .productsection {
-
-            .productimage {
-
-                .imagelink{
-                    width: calc( 100% / 3.07 );
-                }
-            }
-        }
-    }
-}
-
-
-@media only screen and (max-width: 1280px) {
-    .adminhomemainbody {
-
-        .productsection {
-
-            .productimage {
-
-                .imagelink{
-                    width: calc( 100% / 4.07 );
-                }
-            }
-        }
-    }
-}
-
 @media only screen and (min-width: 1280px) {
     .adminhomemainbody {
 
@@ -134,3 +72,72 @@
         }
     }
 }
+@media only screen and (max-width: 1280px) {
+    .adminhomemainbody {
+
+        .productsection {
+
+            .productimage {
+
+                .imagelink{
+                    width: calc( 100% / 4.07 );
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1020px) {
+    .adminhomemainbody {
+
+        .productsection {
+
+            .productimage {
+
+                .imagelink{
+                    width: calc( 100% / 3.07 );
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    .adminhomemainbody {
+
+        .productsection {
+
+            .productimage {
+                justify-content: space-between;
+
+                .imagelink{
+                    width: calc( 100% / 2.02 );
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .adminhomemainbody {
+        width: calc(100% + 60px);
+        .productsection {
+            width: 100%;
+
+            .productimage {
+                width: 100%;
+
+                .imagelink{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

@@ -53,6 +53,7 @@
         font-weight: 600;
       }
     }
+
     .btnblocks {
       flex-direction: row;
     }
@@ -99,7 +100,9 @@
       resize: none;
     }
 
-    .textarea:hover, .reactquillinputfield:hover, .reactquillinputfield:focus {
+    .textarea:hover,
+    .reactquillinputfield:hover,
+    .reactquillinputfield:focus {
       border: 2px solid #000;
       color: #000;
     }
@@ -154,21 +157,20 @@
       -moz-border-radius: 10px;
       -ms-border-radius: 10px;
       -o-border-radius: 10px;
-}
+    }
   }
-  .additionalfilesdisplaybox{
+  .additionalfilesdisplaybox {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
 
-    .thumbnailcontainerblocks{
+    .thumbnailcontainerblocks {
       width: 100%;
       min-height: 200px;
       max-height: 300px;
     }
   }
-
   /* thumbnail image css */
   .thumbnailcontainerblocks {
     min-width: 30%;
@@ -188,10 +190,6 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
   }
-
-
-
-
   .uploadBox {
     position: relative;
     width: 100%;
@@ -289,8 +287,6 @@
       }
     }
   }
-
-
   .thumbnailcontainerblocks:hover,
   .thumbnailcontainerblocks:focus {
     border: 2px solid #000;
@@ -302,7 +298,6 @@
       }
     }
   }
-
   /* product file css */
   .productfilecontainer {
     width: 100%;
@@ -452,6 +447,76 @@
         -moz-border-radius: 0 0 8px 8px;
         -ms-border-radius: 0 0 8px 8px;
         -o-border-radius: 0 0 8px 8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .uploadmainbody {
+    width: 100%;
+    padding: 0;
+    height: 100%;
+
+    .uploadsectionbody {
+      width: 100%;
+      padding: 0;
+
+      .blocks,
+      .btnblocks {
+        width: 100%;
+        padding: 10px;
+        flex-direction: column;
+
+        .selectdiv,
+        .titlediv {
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .title {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      .thumbnailcontainerblocks{
+        width: 100%;
+
+        .thumbnailrevomeicon{
+          top: 5px;
+          right: 5px;
+
+          .icon{
+            font-size: 30px;
+          }
+        }
+      }
+      .additionalfilesdisplaybox{
+        width: 100%;
+      }
+      .productfilecontainer{
+        width: 100%;
+        padding: 10px;
+
+        .thumbnailContainer{
+          width: 100%;
+
+          .thumbnailpreview{
+            width: 100%;
+          }
+
+          .thumbnailrevomeicon{
+            top: 5px;
+            right: 5px;
+
+            .icon{
+              font-size: 30px;
+            }
+          }
+        }
       }
     }
   }

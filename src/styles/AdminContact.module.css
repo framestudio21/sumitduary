@@ -45,6 +45,7 @@
       gap: 10px;
 
       .title {
+        width: 100%;
         background-color: #000;
         color: #fff;
         font-weight: 600;
@@ -62,6 +63,7 @@
       }
 
       .contactDetails {
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -246,7 +248,7 @@
           -o-border-radius: 10px;
         }
 
-        .groupdata{
+        .groupdata {
           display: flex;
           flex-wrap: wrap;
           gap: 10px;
@@ -353,38 +355,93 @@
   color: #fff;
 }
 
-.loadingOverlay {
-  position: fixed;
-  top: 0;
-  left: 60px;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgb(0, 0, 0);
-  z-index: 1000;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
+@media screen and (max-width: 500px) {
+  .admincontactmainbody {
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
 
-.loadingSpinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid var(--color-black);
-  border-radius: 50%;
-  border-top: 5px solid var(--color-silver);
-  animation: spin 1s linear infinite;
-}
+    .contactbody {
+      width: 100%;
+      padding: 10px;
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+      .contactdatamainbody {
+        width: 100%;
+        .contactdatabody {
+          width: 100%;
+
+          .btnsection{
+            flex-direction: column;
+            gap: 10px;
+
+            .deletebtn, .donebtn{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .modalOverlay{
+      width: 100%;
+      left: 0;
+      height: calc(100% - 60px);
+      top: 60px;
+      padding: 5px;
+
+      .modalContent{
+        min-width: 95%;
+        width: 95%;
+        max-width: 95%;
+        min-height: 95%;
+        height: 95%;
+        max-height: 95%;
+        padding: 1rem;
+
+        .contactDetails{
+          .contactDetailssectiongroup{
+            flex-direction: column;
+
+          }
+
+          .contactDetailssection{
+            width: 100%;
+            .imageGallery{
+              width: 100%;
+              height: auto;
+              flex-wrap: wrap;
+              /* flex-direction: column; */
+              .imagelink{
+                width: calc(100% / 2.1);
+                height: 150px;
+                .contactImage{
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+
+
+        .statusUpdateDiv{
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+
+          .title, .select{
+            width: 100%;
+          }
+        }
+
+        .btnsection{
+          flex-direction: column;
+
+          .deletebtn{
+            width: 100%;
+          }
+        }
+
+      }
+    }
   }
 }
