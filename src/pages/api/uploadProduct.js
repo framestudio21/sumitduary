@@ -138,6 +138,7 @@ const handler = async (req, res) => {
             req.body.subcategory2,
             req.body.subcategory3,
           ].filter(Boolean), // Exclude empty subcategories
+        // ].filter(subcategory => subcategory && subcategory.toLowerCase() !== "none"),
           clientDetails: req.body.clientdetails || "",
           owner: "sumit kumar duary",
           createdAt: new Date(),

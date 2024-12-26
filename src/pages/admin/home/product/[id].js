@@ -10,7 +10,6 @@ import { useRouter, usePathname } from "next/navigation";
 
 import Navbar from "../../../../components/Navbar";
 import PageLayout from "../../../../components/PageLayout";
-import PreLoader from "../../../../components/Preloader";
 import ImageCarousel from "../../../../components/ImageCarousel";
 import Logout from "../../../../components/Logout";
 

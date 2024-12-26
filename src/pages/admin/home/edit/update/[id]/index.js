@@ -66,7 +66,7 @@ export default function Upload() {
     clientDetails: "",
   });
   const [uploadInProgress, setUploadInProgress] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
   const pathname = usePathname();
@@ -84,7 +84,6 @@ export default function Upload() {
       return;
     }
 
-    setIsLoading(true);
     fetch(`/api/getProduct?productId=${_id}&specialID=${specialID}`)
       .then((res) => res.json())
       .then((responseData) => {
@@ -118,7 +117,7 @@ export default function Upload() {
         }
       })
       .catch((error) => console.error("Fetch error:", error))
-      .finally(() => setIsLoading(false));
+      .finally(() => setLoading(false));
   }, [pathname]);
 
   console.log(data);
@@ -255,6 +254,20 @@ export default function Upload() {
     <>
       <Navbar />
       <Layout>
+        {loading ? (
+                  <div className="loadingOverlay">
+                    <div className="loadingSpinner"></div>
+                    <p>Loading data, please wait...</p>
+                    <Image
+                      src="/logo/sumitduarylogowhite1.svg"
+                      className="loadingLogo"
+                      width={200}
+                      height={50}
+                      alt="sumit-duary-logo"
+                    />
+                  </div>
+                ) : (
+        <div>
         <Logout />
         <div className={styles.uploadmainbody}>
           <form
@@ -369,6 +382,7 @@ export default function Upload() {
                         src={getDirectDriveLink(data.thumbnail.webViewLink)}
                         alt="Thumbnail Preview"
                         className={styles.thumbnailImage}
+                        style={ { width:"400px", height: "400px" }}
                         width={400} // Replace with desired width
                         height={300} // Replace with desired height
                       />
@@ -441,6 +455,8 @@ export default function Upload() {
             </div>
           </form>
         </div>
+        </div>
+        )}
       </Layout>
     </>
   );

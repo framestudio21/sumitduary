@@ -142,6 +142,9 @@ function ContactModal({ contact, onClose, deleteContact, updateStatus }) {
                         className={styles.contactImage}
                         width={1000}
                         height={1000}
+                        priority={false} // Enable lazy loading by default
+                        placeholder="blur" // Use placeholder for the loading state
+                        blurDataURL="/image/preloadimage.svg"
                       />
                     </Link>
                   ))}
@@ -273,12 +276,11 @@ export default function AdminContact() {
           <div className={styles.contactbody}>
             {error && <div className={styles.errorMessage}>{error}</div>}
             {loading ? (
-              // <div className={styles.loadingMessage}>Loading...</div>
-              //  // Show loading message
-              <div className={styles.loadingOverlay}>
-                <div className={styles.loadingSpinner}></div>
-                {/* <p>Loading data, please wait...</p> */}
-              </div>
+             <div className="loadingOverlay">
+                         <div className="loadingSpinner"></div>
+                         <p>Loading data, please wait...</p>
+                         <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
+                       </div>
             ) : contacts.length === 0 ? (
               <div>No contacts found.</div>
             ) : (

@@ -110,7 +110,9 @@ function Gallery({ images }) {
                   width={calculatedWidth || 1000}
                   height={200}
                   className={styles.galleryImage}
-                  priority
+                  priority={false} // Enable lazy loading by default
+                  placeholder="blur" // Use placeholder for the loading state
+                  blurDataURL="/image/preloadimage.svg"
                 />
               </div>
             );
@@ -141,7 +143,9 @@ function Gallery({ images }) {
             <Image
               src={images[currentIndex].thumbnail}
               className={styles.image}
-              priority
+              priority={false} // Enable lazy loading by default
+              placeholder="blur" // Use placeholder for the loading state
+              blurDataURL="/image/preloadimage.svg"
               width={images[currentIndex].width || 600}
               height={images[currentIndex].height || 300}
               alt={images[currentIndex].title}

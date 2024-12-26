@@ -26,6 +26,7 @@ export default function Edit() {
   const [productsByType, setProductsByType] = useState({});
   const [filteredProducts, setFilteredProducts] = useState({});
   const [loading, setLoading] = useState(false); // Loading state
+  const [preloading, setPreLoading] = useState(true); // Add loading state
 
   const fetchFiles = async () => {
     try {
@@ -51,16 +52,26 @@ export default function Edit() {
       }
     } catch (error) {
       console.error("Error fetching files:", error);
+    } finally {
+      setPreLoading(false)
     }
   };
+
   const handleDelete = async (id) => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this product?");
+    
+    if (!isConfirmed) {
+      // If user clicks "Cancel", stop the execution
+      return;
+    }
+  
     try {
       const response = await fetch(`/api/deleteProduct`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
-
+  
       if (response.ok) {
         alert("Product deleted successfully");
         fetchFiles(); // Refresh the product list
@@ -73,10 +84,22 @@ export default function Edit() {
       alert("An error occurred while deleting the product.");
     }
   };
+  
 
   const handleEdit = (id, specialID, title) => {
-    router.push(`/admin/home/edit/update/${id}-${specialID}-${title}`); // Navigate to edit page
+    const isConfirmed = window.confirm(
+      `Are you sure you want to edit the product: "${title}"?`
+    );
+  
+    if (!isConfirmed) {
+      // If user clicks "Cancel", stop the execution
+      return;
+    }
+  
+    // Navigate to the edit page
+    router.push(`/admin/home/edit/update/${id}-${specialID}-${title}`);
   };
+  
 
   useEffect(() => {
     fetchFiles();
@@ -133,6 +156,20 @@ export default function Edit() {
     <>
       <Navbar />
       <Layout>
+        {loading ? (
+                  <div className="loadingOverlay">
+                    <div className="loadingSpinner"></div>
+                    <p>Loading data, please wait...</p>
+                    <Image
+                      src="/logo/sumitduarylogowhite1.svg"
+                      className="loadingLogo"
+                      width={200}
+                      height={50}
+                      alt="sumit-duary-logo"
+                    />
+                  </div>
+                ) : (
+        <div>
         <Logout />
         <div className={styles.editmainpagebody}>
           {/* Title & Search Bar */}
@@ -174,10 +211,7 @@ export default function Edit() {
 
           {/* Display Products or Loading */}
           {loading ? (
-            <div className={styles.loadingAnimation}>
-              <p>Loading products...</p>
-              <div className={styles.spinner}></div>
-            </div>
+              <div className={styles.nodata}>Loading products...</div>
           ) : (
             <div className={styles.productsDisplay}>
               {Object.keys(filteredProducts).length > 0 ? (
@@ -200,7 +234,9 @@ export default function Edit() {
                             width={150}
                             height={150}
                             className={styles.productImage}
-                            priority
+                            priority={false} // Enable lazy loading by default
+                            placeholder="blur" // Use placeholder for the loading state
+                            blurDataURL="/image/preloadimage.svg" // Path to your placeholder image
                           />
                           </Link>
                           <div className={styles.cardtextsection}>
@@ -256,11 +292,13 @@ export default function Edit() {
                   </div>
                 ))
               ) : (
-                <p>No products found matching the criteria.</p>
+                <div className={styles.nodata}>No products found matching the criteria.</div>
               )}
             </div>
           )}
         </div>
+        </div>
+          )}
       </Layout>
     </>
   );

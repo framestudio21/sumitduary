@@ -5,6 +5,8 @@ import DOMPurify from "dompurify";
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+
 
 import Navbar from "../../../components/Navbar";
 import PageLayout from "../../../components/PageLayout";
@@ -20,7 +22,6 @@ export default function ProductCategory() {
   // // Extract the type from the URL
   // const pathname = usePathname();
   // const type = pathname.split("/procat/type/").pop(); // Gets the last segment of the path
-
 
   const pathname = usePathname(); // e.g., "/procat/type/someType"
 
@@ -42,7 +43,6 @@ export default function ProductCategory() {
       console.log("Extracted type:", extractedType);
     }
   }, [pathname]);
-
 
   const fetchFiles = async () => {
     setLoading(true);
@@ -75,75 +75,86 @@ export default function ProductCategory() {
       <PageLayout>
         <div className={styles.productcateogryidpagemainbody}>
           {loading ? (
-            // <div className={styles.loadingdiv}>Loading products...</div>
-            <div className={styles.loadingOverlay}>
-            <div className={styles.loadingSpinner}></div>
-            {/* <p>Loading data, please wait...</p> */}
-          </div>
+          <div className="loadingOverlay">
+                      <div className="loadingSpinner"></div>
+                      <p>Loading data, please wait...</p>
+                      <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
+                    </div>
           ) : error ? (
             <div className={styles.error}>{error}</div>
           ) : filteredProducts.length > 0 ? (
-           <div className={styles.productSection}>
-            <div className={styles.sectionTitle}>{type}</div>
-             <div className={styles.cardcontainermainbody}>
-              {filteredProducts.map((product) => (
-                <div key={product._id} className={styles.cardcontainer}>
-                  <Link
-                    href={`/procat/${product._id}-${
-                      product.specialID
-                    }-${encodeURIComponent(product.title)}`}
-                    className={styles.title}
-                  >
-                    {product.title}
-                  </Link>
-                  <div className={styles.ownerdatedetails}>
-                    <Link href="/about" className={styles.name}>
-                      by {product.owner || "Unknown"}
+            <div className={styles.productSection}>
+              <div className={styles.sectionTitle}>{type}</div>
+              <div className={styles.cardcontainermainbody}>
+                {filteredProducts.map((product) => (
+                  <div key={product._id} className={styles.cardcontainer}>
+                    <Link
+                      href={`/procat/${product._id}-${
+                        product.specialID
+                      }-${encodeURIComponent(product.title)}`}
+                      className={styles.title}
+                    >
+                      {product.title}
                     </Link>
-                    <div className={styles.date}>
-                      {new Date(product.createdAt).toLocaleString("en-US", {
-                        weekday: "short",
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </div>
-                    <Link href={`/procat/type/${product.type}`} className={styles.type}>
-                      : {product.type}
-                    </Link>
-                    <Link href={`/procat/category/${product.category}`} className={styles.type}>
-                      : {product.category}
-                    </Link>
-                    {product.subCategories?.map((subCategory, index) => (
-                      <Link
-                        key={index}
-                        href={`/procat/category/subcategory/${encodeURIComponent(
-                          subCategory
-                        )}`}
-                        className={styles.subcategories}
-                      >
-                        <div className={styles.subcategory}>
-                          : {subCategory}
-                        </div>
+                    <div className={styles.ownerdatedetails}>
+                      <Link href="/about" className={styles.name}>
+                        by {product.owner || "Unknown"}
                       </Link>
-                    ))}
+                      <div className={styles.date}>
+                        {new Date(product.createdAt).toLocaleString("en-US", {
+                          weekday: "short",
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </div>
+                      <Link
+                        href={`/procat/type/${product.type}`}
+                        className={styles.type}
+                      >
+                        : {product.type}
+                      </Link>
+                      <Link
+                        href={`/procat/category/${product.category}`}
+                        className={styles.type}
+                      >
+                        : {product.category}
+                      </Link>
+                      {product.subCategories
+                        ?.filter(
+                          (subCategory) =>
+                            subCategory && subCategory.toLowerCase() !== "none"
+                        ) // Exclude null, undefined, or "none"
+                        .map((subCategory, index) => (
+                          <Link
+                            key={index}
+                            href={`/procat/category/subcategory/${encodeURIComponent(
+                              subCategory
+                            )}`}
+                            className={styles.subcategories}
+                          >
+                            <div className={styles.subcategory}>
+                              : {subCategory}
+                            </div>
+                          </Link>
+                        ))}
+                    </div>
+                    <div className={styles.description}>
+                      Client: {product.clientdetails || "N/A"}
+                    </div>
+                    <div className={styles.description}>
+                      {product.description || "No description available."}
+                    </div>
+                    <div
+                      className={styles.details}
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(product.details || ""),
+                      }}
+                    />
                   </div>
-                  <div className={styles.description}>
-                    Client: {product.clientdetails || "N/A"}
-                  </div>
-                  <div className={styles.description}>
-                    {product.description || "No description available."}
-                  </div>
-                  <div
-                    className={styles.details}
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(product.details || ""),
-                    }}
-                  />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-           </div>
           ) : (
             <div className={styles.noproductmessage}>
               No products found for type "{pathname}".

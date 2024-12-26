@@ -5,24 +5,24 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+
 
 import Navbar from "@/components/Navbar";
 import Layout from "@/components/PageLayout";
-import PreLoader from "@/components/Preloader";
 
 export default function Index() {
-  //   const router = useRouter();
+    const router = useRouter();
 
-  //   useEffect(() => {
-  //     router.push('/admin/login');
-  //   }, [router]);
+    useEffect(() => {
+      router.push('/admin/login');
+    }, [router]);
 
   return (
     <>
       <Navbar />
       <Layout>
         <div>
-          <PreLoader />
           <div
             style={{
               backgroundColor: "#000",

@@ -20,7 +20,7 @@ export default function Home() {
       try {
         const response = await fetch(`/api/getProduct`);
         const data = await response.json();
-  
+
         if (response.ok) {
           // Filter products by type "product" and map relevant data
           const photographyProducts = data.products
@@ -29,7 +29,7 @@ export default function Home() {
               ...product,
             }))
             .reverse(); // Reverse the array to make the last item first
-  
+
           setProducts(photographyProducts);
         } else {
           console.error("Error fetching data:", data.error);
@@ -40,10 +40,9 @@ export default function Home() {
         setLoading(false); // Set loading to false after data is fetched
       }
     };
-  
+
     fetchFiles();
   }, []);
-  
 
   // Check the products and the image URLs
   // console.log(products);
@@ -60,14 +59,20 @@ export default function Home() {
 
       <Navbar />
       <PageLayout>
-          {loading ? (
-            // <div className={styles.preloader}>Loading...</div>
-            <div className={styles.loadingOverlay}>
-            <div className={styles.loadingSpinner}></div>
-            {/* <p>Loading data, please wait...</p> */}
+        {loading ? (
+          <div className="loadingOverlay">
+            <div className="loadingSpinner"></div>
+            <p>Loading data, please wait...</p>
+            <Image
+              src="/logo/sumitduarylogowhite1.svg"
+              className="loadingLogo"
+              width={200}
+              height={50}
+              alt="sumit-duary-logo"
+            />
           </div>
-          ) : (
-            <div className={styles.homemainbody}>
+        ) : (
+          <div className={styles.homemainbody}>
             {products.map((item) => (
               <div key={item._id} className={styles.imagecard}>
                 {item.thumbnail && (
@@ -83,23 +88,25 @@ export default function Home() {
                         alt={item.title}
                         width={200}
                         height={250}
-                        priority
+                        priority={false} // Enable lazy loading by default
+                        placeholder="blur" // Use placeholder for the loading state
+                        blurDataURL="/image/preloadimage.svg" // Path to your placeholder image
                       />
                       <div className={styles.text}>
                         <i
                           className={`material-symbols-outlined ${styles.icon}`}
-                          >
+                        >
                           search
                         </i>
-                          <p>{item.title}</p>
+                        <p>{item.title}</p>
                       </div>
                     </div>
                   </Link>
                 )}
               </div>
             ))}
-        </div>
-          )}
+          </div>
+        )}
       </PageLayout>
     </>
   );

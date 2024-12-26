@@ -53,3 +53,60 @@ a {
   -ms-transition: margin-left 0.3s ease, width 0.3s ease;
   -o-transition: margin-left 0.3s ease, width 0.3s ease;
 }
+
+
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 60px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 0, 0);
+  z-index: 1000;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 400;
+  gap: 40px;
+
+  .loadingSpinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-black);
+    border-radius: 50%;
+    border-top: 5px solid var(--color-silver);
+    animation: spin 1s linear infinite;
+  }
+
+  .loadingLogo{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  .loadingOverlay{
+    left: 0;
+  }
+}

@@ -119,7 +119,7 @@ const handler = async (req, res) => {
       console.log("[1] Fetching data from 'contacts' collection");
 
       const data = await db.collection("contacts").find({}).toArray();
-      console.log("[1] Fetched data:", data);
+      // console.log("[1] Fetched data:", data);
 
       if (!data || data.length === 0) {
         return res

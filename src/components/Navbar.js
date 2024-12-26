@@ -7,8 +7,6 @@ import Link from "next/link";
 
 import styles from "./Navbar.module.css";
 
-import NavBarMainLogo from "../image/spacelogowhite.svg"
-// import MenuBargerIcon from "@/icon/menu-burger.svg"
 
 export default function Navbar ({ onToggle }) {
   const [isOpen, setIsOpen] = useState(false);

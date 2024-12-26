@@ -128,7 +128,9 @@ const ImageCarousel = ({ images }) => {
                 onClick={() => openModal(currentStartIndex + index)}
                 width={1000}
                 height={1000}
-                priority
+                priority={false} // Enable lazy loading by default
+                placeholder="blur" // Use placeholder for the loading state
+                blurDataURL="/image/preloadimage.svg"
               />
             ))}
         </div>
@@ -162,7 +164,9 @@ const ImageCarousel = ({ images }) => {
               className={styles.modalcontentimage}
               width={1000}
               height={1000}
-              priority
+              priority={false} // Enable lazy loading by default
+              placeholder="blur" // Use placeholder for the loading state
+              blurDataURL="/image/preloadimage.svg"
             />
 
             <button

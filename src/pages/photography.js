@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 import Navbar from "../components/Navbar";
 import Layout from "../components/PageLayout";
@@ -49,11 +50,11 @@ export default function Photography() {
       <Navbar />
       <Layout>
         {loading ? (
-          // <div className={styles.preloader}>Loading...</div>
-          <div className={styles.loadingOverlay}>
-          <div className={styles.loadingSpinner}></div>
-          {/* <p>Loading data, please wait...</p> */}
-        </div>
+          <div className="loadingOverlay">
+                      <div className="loadingSpinner"></div>
+                      <p>Loading data, please wait...</p>
+                      <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
+                    </div>
         ) : (
           <div className={styles.photographymainbody}>
             <Gallery images={products} />

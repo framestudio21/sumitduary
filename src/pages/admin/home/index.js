@@ -9,62 +9,15 @@ import Link from "next/link";
 import Navbar from "../../../components/Navbar";
 import Layout from "../../../components/PageLayout";
 import Logout from "../../../components/Logout";
-import ImageCarousel from "../../../components/ImageCarousel";
 
 import getDirectDriveLink from "../../../utils/getDirectDriveLink";
 
 import styles from "../../../styles/AdminHome.module.css";
 
 export default function AdminHome() {
-  const Photos = [
-    {
-      id: "1",
-      src: "/image/image1.webp",
-      name: "Image 1",
-    },
-    {
-      id: "2",
-      src: "/image/image3.jpg",
-      name: "Image 2",
-    },
-    {
-      id: "3",
-      src: "/image/image4.webp",
-      name: "Image 3",
-    },
-    {
-      id: "4",
-      src: "/image/image5.jpg",
-      name: "Image 4",
-    },
-    {
-      id: "5",
-      src: "/image/image6.jpg",
-      name: "Image 5",
-    },
-    {
-      id: "6",
-      src: "/image/image7.webp",
-      name: "Image 6",
-    },
-    {
-      id: "7",
-      src: "/image/image8.webp",
-      name: "Image 7",
-    },
-    {
-      id: "8",
-      src: "/image/img1.JPG",
-      name: "Image 8",
-    },
-    {
-      id: "9",
-      src: "/image/img2.JPG",
-      name: "Image 9",
-    },
-  ];
 
   const [productsByType, setProductsByType] = useState({});
+  const [loading, setLoading] = useState(true); // Add loading state
 
   const fetchFiles = async () => {
     try {
@@ -91,6 +44,8 @@ export default function AdminHome() {
       }
     } catch (error) {
       console.error("Error fetching files:", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -103,8 +58,16 @@ export default function AdminHome() {
     <>
       <Navbar />
       <Layout>
-        <Logout />
-        <div className={styles.adminhomemainbody}>
+      {loading ? (
+            <div className="loadingOverlay">
+            <div className="loadingSpinner"></div>
+            <p>Loading data, please wait...</p>
+            <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
+          </div>
+          ) : (
+          <div className={styles.adminhome}>
+            <Logout />
+            <div className={styles.adminhomemainbody}>
           <div className={styles.productsection}>
             {Object.entries(productsByType).map(([type, products]) => (
               <div key={type} className={styles.producttype}>
@@ -122,10 +85,12 @@ export default function AdminHome() {
                         <Image
                           src={product.thumbnail}
                           className={styles.image}
-                          width={100}
-                          height={100}
+                          width={1000}
+                          height={1000}
                           alt={product.title}
-                          priority
+                          priority={false} // Enable lazy loading by default
+                          placeholder="blur" // Use placeholder for the loading state
+                          blurDataURL="/image/preloadimage.svg"
                         /></Link>
                       </div>
                     ))
@@ -137,8 +102,9 @@ export default function AdminHome() {
             ))}
           </div>
 
-          {/* <ImageCarousel images={Photos} /> */}
         </div>
+          </div>
+         )}
       </Layout>
     </>
   );
