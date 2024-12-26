@@ -163,14 +163,14 @@ export default function Id() {
                 {data ? data.title : "Loading..."}
               </div>
               <div className={styles.producttypeowner}>
-                <div className={styles.owner}>
-                  by sumit kumar duary :{" "}
+                <Link className={styles.owner} href="/about">
+                {data ? `by ${data.owner || "Unknown"}` : " "} : {" "}
                   <span className={styles.date}>
                     {data?.createdAt
                       ? formatDate(data.createdAt)
                       : "Date unavailable"}
                   </span>
-                </div>
+                </Link>
                 <div className={styles.type}>
                  
                   {data?.subCategories?.length ? (

@@ -51,7 +51,7 @@ export default function About () {
 
               {/* description section */}
               <div className={styles.imagesection}>
-                <Image src="/image/sumitimage.jpg" alt="sumitduaryimage" className={styles.sumitimage} width={100} height={100}/>
+                {/* <Image src="/image/sumitimage.jpg" alt="sumitduaryimage" className={styles.sumitimage} width={100} height={100}/> */}
                 <p className={styles.paragraph}>Welcome to my corner of creativity and expertise! Based in the vibrant city of Kolkata, I am a seasoned advocate with a passion for delivering sound legal solutions. Beyond the courtroom, I channel my creativity into graphic design and website development, crafting visually compelling designs and dynamic websites tailored to your needs. With a unique blend of professional rigor and artistic flair, I strive to provide comprehensive services that empower individuals and businesses alike.</p>
               </div>
 
