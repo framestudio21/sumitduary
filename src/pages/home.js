@@ -62,7 +62,7 @@ export default function Home() {
         {loading ? (
           <div className="loadingOverlay">
             <div className="loadingSpinner"></div>
-            <p>Loading data, please wait...</p>
+            {/* <p>Loading data, please wait...</p> */}
             <Image
               src="/logo/sumitduarylogowhite1.svg"
               className="loadingLogo"

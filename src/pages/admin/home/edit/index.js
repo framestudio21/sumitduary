@@ -156,10 +156,10 @@ export default function Edit() {
     <>
       <Navbar />
       <Layout>
-        {loading ? (
+        {preloading ? (
                   <div className="loadingOverlay">
                     <div className="loadingSpinner"></div>
-                    <p>Loading data, please wait...</p>
+                    {/* <p>Loading data, please wait...</p> */}
                     <Image
                       src="/logo/sumitduarylogowhite1.svg"
                       className="loadingLogo"
@@ -244,13 +244,7 @@ export default function Edit() {
                               {product.title}
                             </div>
                             <div className={styles.productID}>
-                              <span className={styles.productidspan}>ID :</span> {product._id}
-                            </div>
-                            <div className={styles.productID}>
-                            <span className={styles.productidspan}>specialID :</span> {product.specialID}
-                            </div>
-                            <div className={styles.productID}>
-                            <span className={styles.productidspan}>uniqueID :</span> {product.uniqueID}
+                            <span className={styles.productidspan}>ID :</span> {product.uniqueID}
                             </div>
                             <div className={styles.productID}>
                             <span className={styles.productidspan}>type :</span> {product.type} <span className={styles.productidspan}> / category :</span>{" "}

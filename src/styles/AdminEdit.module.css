@@ -157,7 +157,7 @@
         -moz-border-radius: 10px;
         -ms-border-radius: 10px;
         -o-border-radius: 10px;
-        height: 350px;
+        height: 280px;
         display: flex;
         border: 3px solid #000;
 
@@ -183,20 +183,20 @@
           gap: 2px;
           height: 100%;
           justify-content: space-between;
-          border-radius: 0 8px 8px 0;
-          -webkit-border-radius: 0 1px 1px 0;
-          -moz-border-radius: 0 1px 1px 0;
-          -ms-border-radius: 0 1px 1px 0;
-          -o-border-radius: 0 1px 1px 0;
-        }
+          border-radius: 0 10px 10px 0;
+          -webkit-border-radius: 0 10px 10px 0;
+          -moz-border-radius: 0 10px 10px 0;
+          -ms-border-radius: 0 10px 10px 0;
+          -o-border-radius: 0 10px 10px 0;
+}
 
         .productidspan {
           font-weight: 800;
         }
 
         .cardtextsection:hover {
-          background-color: var(--color-black);
-          color: var(--color-white);
+          background-color: #ccc;
+          color: #000;
 
           .btnsection {
             .editButton,

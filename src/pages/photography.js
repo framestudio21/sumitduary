@@ -52,7 +52,7 @@ export default function Photography() {
         {loading ? (
           <div className="loadingOverlay">
                       <div className="loadingSpinner"></div>
-                      <p>Loading data, please wait...</p>
+                      {/* <p>Loading data, please wait...</p> */}
                       <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
                     </div>
         ) : (
