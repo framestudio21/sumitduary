@@ -19,8 +19,24 @@ function Gallery({ images }) {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    const handleScroll = (e) => {
+      e.preventDefault();
+      if (windowWidth >= 480) {
+        setScale((prevScale) =>
+          Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
+        );
+      }
+    };
+
+    // Add the scroll listener with passive: false
+    document.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      // Remove the scroll listener on cleanup
+      document.removeEventListener("wheel", handleScroll);
+    };
+  }, [windowWidth]);
 
   // Open the full-sized image viewer
   const viewImage = (index) => {
@@ -80,9 +96,11 @@ function Gallery({ images }) {
   // Handle image zoom on scroll
   const handleScroll = (e) => {
     e.preventDefault();
-    setScale((prevScale) =>
-      Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
-    );
+    if (windowWidth >= 480) {
+      setScale((prevScale) =>
+        Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
+      );
+    }
   };
 
   return (
