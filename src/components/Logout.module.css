@@ -62,10 +62,15 @@
   .topnavbar {
     padding: 1rem 0.8rem;
     overflow-x: scroll;
+    flex-wrap: wrap;
     .text {
      display: none;
     }
+    .btnsection{
+      gap: 5px;
+    }
     .logoutbtn {
+      width: 120px;
       padding: 0.5rem 1rem;
       font-size: 12px;
     }
