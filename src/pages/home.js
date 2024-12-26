@@ -88,7 +88,7 @@ export default function Home() {
                         alt={item.title}
                         width={200}
                         height={250}
-                        priority={false} // Enable lazy loading by default
+                        priority={true} // Enable lazy loading by default
                         placeholder="blur" // Use placeholder for the loading state
                         blurDataURL="/image/preloadimage.svg" // Path to your placeholder image
                       />

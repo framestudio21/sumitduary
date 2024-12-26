@@ -385,6 +385,9 @@ export default function Upload() {
                         style={ { width:"400px", height: "400px" }}
                         width={400} // Replace with desired width
                         height={300} // Replace with desired height
+                        priority={false} // Enable lazy loading by default
+                        placeholder="blur" // Use placeholder for the loading state
+                        blurDataURL="/image/preloadimage.svg"
                       />
                       <div className={styles.thumbnailname}>
                         {data.thumbnail.name || "Thumbnail Image"}
@@ -411,6 +414,9 @@ export default function Upload() {
                             className={styles.thumbnailImage}
                             width={1000} // Replace with desired width
                             height={1000} // Replace with desired height
+                            priority={false} // Enable lazy loading by default
+                            placeholder="blur" // Use placeholder for the loading state
+                            blurDataURL="/image/preloadimage.svg"
                           />
                           <div className={styles.thumbnailname}>
                             {file.name || "Unnamed File"}
