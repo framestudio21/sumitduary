@@ -237,6 +237,9 @@ export default function AdminContact() {
   };
 
   const deleteContact = async (_id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this contact?");
+    if (!confirmDelete) return; // Exit if the user cancels the action
+  
     try {
       const response = await fetch(`/api/contact`, {
         method: "DELETE",
@@ -244,12 +247,14 @@ export default function AdminContact() {
         body: JSON.stringify({ _id }),
       });
       if (!response.ok) throw new Error("Failed to delete contact");
+  
       setContacts((prev) => prev.filter((contact) => contact._id !== _id));
       alert("Contact deleted successfully!");
     } catch (error) {
       alert("Failed to delete contact: " + error.message);
     }
   };
+  
 
   const formatTimestamp = (timestamp) => new Date(timestamp).toLocaleString();
 
@@ -282,7 +287,7 @@ export default function AdminContact() {
                          <Image src="/logo/sumitduarylogowhite1.svg" className="loadingLogo" width={200} height={50} alt="sumit-duary-logo"/>
                        </div>
             ) : contacts.length === 0 ? (
-              <div>No contacts found.</div>
+              <div className={styles.nodatafound}>No contacts found.</div>
             ) : (
               <>
                 {/* Status filter dropdown */}
