@@ -19,24 +19,17 @@ function Gallery({ images }) {
     };
     window.addEventListener("resize", handleResize);
     handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+    // Handle image zoom on scroll
     const handleScroll = (e) => {
       e.preventDefault();
-      if (windowWidth >= 480) {
-        setScale((prevScale) =>
-          Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
-        );
-      }
+      setScale((prevScale) =>
+        Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
+      );
     };
 
-    // Add the scroll listener with passive: false
-    document.addEventListener("wheel", handleScroll, { passive: false });
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      // Remove the scroll listener on cleanup
-      document.removeEventListener("wheel", handleScroll);
-    };
-  }, [windowWidth]);
 
   // Open the full-sized image viewer
   const viewImage = (index) => {
@@ -93,15 +86,6 @@ function Gallery({ images }) {
     }
   };
 
-  // Handle image zoom on scroll
-  const handleScroll = (e) => {
-    e.preventDefault();
-    if (windowWidth >= 480) {
-      setScale((prevScale) =>
-        Math.max(1, Math.min(prevScale + (e.deltaY < 0 ? 0.1 : -0.1), 5))
-      );
-    }
-  };
 
   return (
     <div>
@@ -123,12 +107,13 @@ function Gallery({ images }) {
                 onClick={() => viewImage(index)} // Properly attach click handler
               >
                 <Image
-                  src={image.thumbnail}
+                  // src={image.thumbnail}
+                  src={getDirectDriveLink(image.thumbnail)}
                   alt={image.title}
-                  width={calculatedWidth || 1000}
-                  height={200}
+                  width={calculatedWidth || 500 }
+                  height={200 || auto}
                   className={styles.galleryImage}
-                  priority={false} // Enable lazy loading by default
+                  priority={true} // Enable lazy loading by default
                   placeholder="blur" // Use placeholder for the loading state
                   blurDataURL="/image/preloadimage.svg"
                 />
@@ -159,9 +144,9 @@ function Gallery({ images }) {
             }}
           >
             <Image
-              src={images[currentIndex].thumbnail}
+              src={getDirectDriveLink(images[currentIndex].thumbnail)}
               className={styles.image}
-              priority={false} // Enable lazy loading by default
+              priority={true} // Enable lazy loading by default
               placeholder="blur" // Use placeholder for the loading state
               blurDataURL="/image/preloadimage.svg"
               width={images[currentIndex].width || 600}
