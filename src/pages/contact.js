@@ -259,7 +259,7 @@ export default function Contact() {
                     <label className={styles.addImageLabel}>
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/*, image/png, image/jpeg, image/jpg, image/webp, image/svg+xml"
                         onChange={handleImageUpload}
                         multiple
                         className={styles.fileInput}

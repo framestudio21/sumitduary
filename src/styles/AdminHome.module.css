@@ -50,7 +50,7 @@
             gap: 10px;
 
             .imagelink{
-                width: calc(100% / 5.1);
+                width: calc(100% / 5.15);
                 height: 250px;
 
                 .image{
@@ -89,7 +89,7 @@
             .productimage {
 
                 .imagelink{
-                    width: calc( 100% / 5.07 );
+                    width: calc( 100% / 5.15 );
                 }
             }
         }
@@ -103,7 +103,7 @@
             .productimage {
 
                 .imagelink{
-                    width: calc( 100% / 4.07 );
+                    width: calc( 100% / 4.15 );
                 }
             }
         }
@@ -117,7 +117,7 @@
             .productimage {
 
                 .imagelink{
-                    width: calc( 100% / 3.07 );
+                    width: calc( 100% / 3.15 );
                 }
             }
         }
@@ -132,7 +132,7 @@
                 justify-content: space-between;
 
                 .imagelink{
-                    width: calc( 100% / 2.02 );
+                    width: calc( 100% / 2.15 );
                 }
             }
         }
