@@ -105,9 +105,9 @@ function ContactModal({ contact, onClose, deleteContact, updateStatus }) {
             <strong>Unique ID:</strong> {contact.uniqueID}
           </p>
 
-          <p className={styles.contactDetailssection}>
+          {/* <p className={styles.contactDetailssection}>
             <strong>Special ID:</strong> {contact.specialID}
-          </p>
+          </p> */}
 
           <p className={styles.contactDetailssection}>
             <strong>Subject:</strong> {contact.subject}

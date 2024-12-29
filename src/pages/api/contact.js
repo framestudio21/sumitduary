@@ -66,26 +66,27 @@ const handler = async (req, res) => {
             }
           }
 
-          const specialID = crypto
-            .randomBytes(16)
-            .toString("hex")
-            .toUpperCase();
-          const date = new Date();
-          const formattedDate = `${date.getFullYear()}${(date.getMonth() + 1)
-            .toString()
-            .padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}`;
-          const formattedTime = `${date
-            .getHours()
-            .toString()
-            .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}`;
-          const uploadNumber = Math.floor(Math.random() * 1000)
-            .toString()
-            .padStart(3, "0");
+          // const specialID = crypto
+          //   .randomBytes(16)
+          //   .toString("hex")
+          //   .toUpperCase();
+          // const date = new Date();
+          // const formattedDate = `${date.getFullYear()}${(date.getMonth() + 1)
+          //   .toString()
+          //   .padStart(2, "0")}${date.getDate().toString().padStart(2, "0")}`;
+          // const formattedTime = `${date
+          //   .getHours()
+          //   .toString()
+          //   .padStart(2, "0")}${date.getMinutes().toString().padStart(2, "0")}`;
+          // const uploadNumber = Math.floor(Math.random() * 1000)
+          //   .toString()
+          //   .padStart(3, "0");
 
-          const uniqueID = `CONTACT-${category.toUpperCase()}${formattedDate}${formattedTime}${uploadNumber}`;
+          // const uniqueID = `CONTACT-${category.toUpperCase()}${formattedDate}${formattedTime}${uploadNumber}`;
+          const uniqueID = `${category.toUpperCase()}${formattedDate}${formattedTime}${uploadNumber}`;
 
           const document = {
-            specialID,
+            // specialID,
             uniqueID,
             name,
             email,

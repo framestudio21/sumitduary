@@ -36,21 +36,27 @@ export default function Contact() {
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    // Validate file size
+  for (const file of files) {
+    if (file.size > maxFileSize) {
+      setError(`File ${file.name} exceeds the 5MB size limit.`);
+      return;
+    }
+  }
     if (files.length + formData.referenceImages.length > 5) {
       setError("You can upload a maximum of 5 images.");
       return;
     }
-
     const imagesWithPreview = files.map((file) => ({
       file,
       preview: URL.createObjectURL(file),
     }));
-
-
     setFormData((prev) => ({
       ...prev,
       referenceImages: [...prev.referenceImages, ...imagesWithPreview],
     }));
+    setError(""); // Clear any previous error
   };
 
   const handleImageRemove = (index) => {
@@ -93,7 +99,7 @@ export default function Contact() {
       }
     });
 
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/newContact", {
         method: "POST",
         body: data,
       });
