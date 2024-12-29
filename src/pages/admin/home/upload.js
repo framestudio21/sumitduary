@@ -64,6 +64,7 @@ export default function Upload() {
     clientdetails: "",
   });
   const [uploadInProgress, setUploadInProgress] = useState(false);
+  const [popupMessage, setPopupMessage] = useState(null);
 
   const handleEditorChange = (content) => {
     setFormData((prevData) => ({
@@ -74,16 +75,22 @@ export default function Upload() {
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
+    const maxFileSize = 5 * 1024 * 1024; // 5MB
 
     if (files) {
       const file = files[0];
       if (!file) return;
 
+      if (file.size > maxFileSize) {
+        setPopupMessage(`File size exceeds the 5MB limit: ${file.name}`);
+        return;
+      }
+
       if (name === "thumbnail") {
         setFormData((prevData) => ({ ...prevData, thumbnail: file }));
       } else if (name === "productfiles") {
         if (formData.additionalfiles.length >= 20) {
-          alert("You can upload a maximum of 10 files.");
+          setPopupMessage("You can upload a maximum of 20 files.");
           return;
         }
 
@@ -91,7 +98,7 @@ export default function Upload() {
           (f) => f.name === file.name && f.size === file.size
         );
         if (isDuplicate) {
-          alert("This file has already been uploaded.");
+          setPopupMessage("This file has already been uploaded.");
           return;
         }
 
@@ -136,6 +143,7 @@ export default function Upload() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploadInProgress(true);
+    setPopupMessage("Uploading data...");
 
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -158,7 +166,7 @@ export default function Upload() {
       console.log("data sent to api/apload")
 
       if (response.ok) {
-        alert("Upload successful!");
+        setPopupMessage("Upload successful!");
         setFormData({
           type: "none",
           title: "",
@@ -174,13 +182,16 @@ export default function Upload() {
         });
       } else {
         const result = await response.json();
-        alert(`Upload failed: ${result.message || "Unknown error"}`);
+        setPopupMessage(`Upload failed: ${result.message || "Unknown error"}`);
       }
     } catch (error) {
       console.error("Error during upload:", error);
-      alert("An error occurred during upload.");
+      setPopupMessage("An error occurred during upload.");
     } finally {
       setUploadInProgress(false);
+      setTimeout(() => {
+        setPopupMessage(null);
+      }, 8000); // Clear the popup after 8 seconds
     }
   };
 
@@ -207,6 +218,11 @@ export default function Upload() {
       <Layout>
         <Logout />
         <div className={styles.uploadmainbody}>
+
+        {popupMessage && (
+            <div className={styles.popup}>{popupMessage}</div>
+          )}
+
           <form
             className={styles.uploadsectionbody}
             onSubmit={handleSubmit}

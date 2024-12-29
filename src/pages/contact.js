@@ -99,7 +99,7 @@ export default function Contact() {
       }
     });
 
-      const response = await fetch("/api/newContact", {
+      const response = await fetch("/api/uploadContact", {
         method: "POST",
         body: data,
       });
