@@ -78,6 +78,18 @@ export default function ProductCategory() {
       return acc;
     }, {});
 
+    // Ensure "product" type comes first
+const sortedGroupedByType = Object.keys(groupedByType)
+.sort((keyA, keyB) => {
+  if (keyA.toLowerCase() === "product") return -1; // Prioritize "product"
+  if (keyB.toLowerCase() === "product") return 1;
+  return keyA.localeCompare(keyB); // Sort other keys alphabetically
+})
+.reduce((sortedAcc, key) => {
+  sortedAcc[key] = groupedByType[key];
+  return sortedAcc;
+}, {});
+
   return (
     <>
       <Navbar />
@@ -91,8 +103,8 @@ export default function ProductCategory() {
                       </div>
           ) : error ? (
             <div className={styles.error}>{error}</div>
-          ) : Object.keys(groupedByType).length > 0 ? (
-            Object.entries(groupedByType).map(([groupType, products]) => (
+          ) : Object.keys(sortedGroupedByType).length > 0 ? (
+            Object.entries(sortedGroupedByType).map(([groupType, products]) => (
               <div key={groupType} className={styles.productSection}>
                 <div className={styles.sectionTitle}>{groupType}</div>
                 <div className={styles.cardcontainermainbody}>

@@ -66,6 +66,16 @@ export default function ProductCategory() {
     return acc;
   }, {});
 
+  // Convert grouped object to array and ensure "product" is first
+const groupedArray = Object.entries(groupedByType).sort(([keyA], [keyB]) => {
+  if (keyA.toLowerCase() === "product") return -1; // Move "product" to the top
+  if (keyB.toLowerCase() === "product") return 1;
+  return keyA.localeCompare(keyB); // Sort other types alphabetically
+});
+
+// Transform back into an object if needed
+const sortedGroupedByType = Object.fromEntries(groupedArray);
+
   return (
     <>
       <Navbar />
@@ -79,8 +89,8 @@ export default function ProductCategory() {
                      </div>
           ) : error ? (
             <div className={styles.error}>{error}</div>
-          ) : Object.keys(groupedByType).length > 0 ? (
-            Object.entries(groupedByType).map(([type, products]) => (
+          ) : Object.keys(sortedGroupedByType).length > 0 ? (
+            Object.entries(sortedGroupedByType).map(([type, products]) => (
               <div key={type} className={styles.productSection}>
                 <div className={styles.sectionTitle}>{type}</div>
                 <div className={styles.cardcontainermainbody}>

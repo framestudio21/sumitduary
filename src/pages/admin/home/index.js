@@ -132,7 +132,23 @@ export default function AdminHome() {
           return acc;
         }, {});
 
-        setProductsByType(categorizedProducts);
+        // setProductsByType(categorizedProducts);
+              // Sort keys to prioritize "product" and "digitalart"
+      const sortedKeys = Object.keys(categorizedProducts).sort((keyA, keyB) => {
+        if (keyA.toLowerCase() === "product") return -1; // Prioritize "product"
+        if (keyB.toLowerCase() === "product") return 1;
+        if (keyA.toLowerCase() === "digitalart") return -1; // Prioritize "digitalart" after "product"
+        if (keyB.toLowerCase() === "digitalart") return 1;
+        return keyA.localeCompare(keyB); // Sort remaining keys alphabetically
+      });
+
+      // Rebuild the sorted object
+      const sortedCategorizedProducts = sortedKeys.reduce((sortedAcc, key) => {
+        sortedAcc[key] = categorizedProducts[key];
+        return sortedAcc;
+      }, {});
+
+      setProductsByType(sortedCategorizedProducts);
       } else {
         console.error("Error fetching data:", data.error);
       }

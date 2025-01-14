@@ -49,6 +49,11 @@ export default function Navbar ({ onToggle }) {
           <div className={styles.navbar}>
 
             <div className={styles.middlesection}>
+            <Link href="/404" className={styles.navlist}>
+                <li className={styles.listli}><i className={`material-icons ${styles.icon}`} alt="search">
+                search
+              </i>search</li>
+              </Link>
               <Link href="/" className={styles.navlist}>
                 <li>Home</li>
               </Link>

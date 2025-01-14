@@ -87,6 +87,14 @@ export default function Id() {
             router.back(); // Redirect to the previous page
             return;
           }
+          
+          // useEffect(() => {
+          //   const type = responseData?.currentProduct?.type?.toLowerCase();
+        
+          //   if (type === 'digitalart' || type === 'photography') {
+          //     router.back(); // Redirect to the previous page
+          //   }
+          // }, [responseData, router]);
 
           // home-specific data
           setPrevItems(

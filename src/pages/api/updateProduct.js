@@ -146,6 +146,7 @@ const handler = async (req, res) => {
           category,
           subCategories,
           clientDetails,
+          owner: "sumit kumar duary",
           updatedAt: new Date(),
         };
 

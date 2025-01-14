@@ -204,7 +204,8 @@ const handler = async (req, res) => {
             req.body.subcategory2,
             req.body.subcategory3,
           ].filter(Boolean),
-          clientDetails: req.body.clientDetails || "",
+          clientdetails: req.body.clientdetails || "",
+          owner: "sumit kumar duary",
           createdAt: new Date(),
         };
 
